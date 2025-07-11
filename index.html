@@ -109,7 +109,7 @@
 
         .predictions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 25px;
         }
 
@@ -260,6 +260,13 @@
             opacity: 0.8;
         }
 
+        @media (max-width: 1024px) {
+            .predictions-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -300,21 +307,20 @@
             }
 
             .confidence-section {
-                flex-direction: column;
+                flex-direction: row;
                 gap: 10px;
             }
 
             .confidence-bar {
                 padding: 8px 12px;
                 font-size: 0.9rem;
-                width: 100%;
-                text-align: center;
+                flex: 1;
             }
 
             .odds {
                 padding: 6px 10px;
                 font-size: 0.9rem;
-                align-self: center;
+                flex-shrink: 0;
             }
             
             .match-info {
