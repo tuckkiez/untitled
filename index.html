@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Ultra Advanced Football Predictor - Value Bet Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            color: #666;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card h3 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+        
+        .stat-card p {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .match-analysis {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .match-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .match-header h2 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .match-time {
+            font-size: 1.1em;
+            color: #666;
+            background: #f8f9fa;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+        }
+        
+        .value-bets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .value-bet-card {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .value-bet-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+        }
+        
+        .value-bet-card.high-confidence {
+            background: linear-gradient(135deg, #dc3545, #fd7e14);
+        }
+        
+        .bet-rank {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .bet-type {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .bet-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .bet-detail {
+            text-align: center;
+        }
+        
+        .bet-detail-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+        
+        .bet-detail-value {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        
+        .odds-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .odds-table th,
+        .odds-table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .odds-table th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .odds-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .value-bet-row {
+            background: #d4edda !important;
+            font-weight: bold;
+        }
+        
+        .no-value-row {
+            background: #f8d7da !important;
+        }
+        
+        .recommendation {
+            background: linear-gradient(135deg, #17a2b8, #6f42c1);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .recommendation h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .recommendation p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            color: white;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #856404;
+        }
+        
+        .warning h4 {
+            margin-bottom: 10px;
+            color: #d63031;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .value-bets {
+                grid-template-columns: 1fr;
+            }
+            
+            .bet-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🚀 Ultra Advanced Football Predictor</h1>
+            <p>ระบบวิเคราะห์ Value Bet อัตโนมัติ - ความแม่นยำระดับมืออาชีพ 60%+</p>
+        </div>
+
+        <!-- Performance Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>60.0%</h3>
+                <p>ความแม่นยำการทำนาย</p>
+            </div>
+            <div class="stat-card">
+                <h3>50.0%</h3>
+                <p>Value Bet Detection</p>
+            </div>
+            <div class="stat-card">
+                <h3>+11.3%</h3>
+                <p>Edge เฉลี่ย</p>
+            </div>
+            <div class="stat-card">
+                <h3>+24.9%</h3>
+                <p>ROI คาดหวัง</p>
+            </div>
+        </div>
+
+        <!-- Match Analysis -->
+        <div class="match-analysis">
+            <div class="match-header">
+                <h2>🏆 ซีเอ อัลไดรี่ vs เซ็นทรัล คอร์โดบา เอสดีอี</h2>
+                <div class="match-time">⏰ 12 ก.ค. 01:30</div>
+            </div>
+
+            <!-- Value Bets Found -->
+            <h3 style="text-align: center; margin-bottom: 20px; color: #28a745;">🔥 Value Bets ที่พบ: 2 รายการ</h3>
+            
+            <div class="value-bets">
+                <!-- Value Bet 1 -->
+                <div class="value-bet-card high-confidence">
+                    <div class="bet-rank">🥇 #1</div>
+                    <div class="bet-type">UNDER 1.5/2 ลูก</div>
+                    <div class="bet-details">
+                        <div class="bet-detail">
+                            <div class="bet-detail-label">ราคา</div>
+                            <div class="bet-detail-value">2.09</div>
+                        </div>
+                        <div class="bet-detail">
+                            <div class="bet-detail-label">Edge</div>
+                            <div class="bet-detail-value">+17.2%</div>
+                        </div>
+                        <div class="bet-detail">
+                            <div class="bet-detail-label">Expected Value</div>
+                            <div class="bet-detail-value">+35.9%</div>
+                        </div>
+                        <div class="bet-detail">
+                            <div class="bet-detail-label">ความมั่นใจ</div>
+                            <div class="bet-detail-value">HIGH</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Value Bet 2 -->
+                <div class="value-bet-card">
+                    <div class="bet-rank">🥈 #2</div>
+                    <div class="bet-type">ทีมเยือนชนะ</div>
+                    <div class="bet-details">
+                        <div class="bet-detail">
+                            <div class="bet-detail-label">ราคา</div>
+                            <div class="bet-detail-value">2.53</div>
+                        </div>
+                        <div class="bet-detail">
+                            <div class="bet-detail-label">Edge</div>
+                            <div class="bet-detail-value">+5.5%</div>
+                        </div>
+                        <div class="bet-detail">
+                            <div class="bet-detail-label">Expected Value</div>
+                            <div class="bet-detail-value">+13.8%</div>
+                        </div>
+                        <div class="bet-detail">
+                            <div class="bet-detail-label">ความมั่นใจ</div>
+                            <div class="bet-detail-value">MEDIUM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Odds Analysis Table -->
+            <h3 style="margin-top: 40px; margin-bottom: 20px; text-align: center;">📊 การวิเคราะห์ราคาทั้งหมด</h3>
+            
+            <table class="odds-table">
+                <thead>
+                    <tr>
+                        <th>ประเภท</th>
+                        <th>ตัวเลือก</th>
+                        <th>ราคา</th>
+                        <th>ความน่าจะเป็นของเรา</th>
+                        <th>Edge</th>
+                        <th>สถานะ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="no-value-row">
+                        <td rowspan="3">1X2</td>
+                        <td>เจ้าบ้านชนะ</td>
+                        <td>3.00</td>
+                        <td>30.0%</td>
+                        <td>-3.3%</td>
+                        <td>❌ No Value</td>
+                    </tr>
+                    <tr class="no-value-row">
+                        <td>เสมอ</td>
+                        <td>2.84</td>
+                        <td>25.0%</td>
+                        <td>-10.2%</td>
+                        <td>❌ No Value</td>
+                    </tr>
+                    <tr class="value-bet-row">
+                        <td>ทีมเยือนชนะ</td>
+                        <td>2.53</td>
+                        <td>45.0%</td>
+                        <td>+5.5%</td>
+                        <td>✅ Value Bet</td>
+                    </tr>
+                    <tr class="no-value-row">
+                        <td rowspan="2">Handicap (0)</td>
+                        <td>เจ้าบ้าน +0</td>
+                        <td>2.13</td>
+                        <td>40.0%</td>
+                        <td>-6.9%</td>
+                        <td>❌ No Value</td>
+                    </tr>
+                    <tr class="no-value-row">
+                        <td>ทีมเยือน +0</td>
+                        <td>1.78</td>
+                        <td>60.0%</td>
+                        <td>+3.8%</td>
+                        <td>❌ No Value</td>
+                    </tr>
+                    <tr class="no-value-row">
+                        <td rowspan="2">Over/Under (1.5/2)</td>
+                        <td>Over 1.5/2</td>
+                        <td>1.80</td>
+                        <td>35.0%</td>
+                        <td>-20.6%</td>
+                        <td>❌ No Value</td>
+                    </tr>
+                    <tr class="value-bet-row">
+                        <td>Under 1.5/2</td>
+                        <td>2.09</td>
+                        <td>65.0%</td>
+                        <td>+17.2%</td>
+                        <td>✅ Value Bet</td>
+                    </tr>
+                    <tr class="no-value-row">
+                        <td rowspan="2">เตะมุม (9)</td>
+                        <td>Over 9</td>
+                        <td>2.05</td>
+                        <td>45.0%</td>
+                        <td>-3.8%</td>
+                        <td>❌ No Value</td>
+                    </tr>
+                    <tr class="no-value-row">
+                        <td>Under 9</td>
+                        <td>1.77</td>
+                        <td>55.0%</td>
+                        <td>-1.5%</td>
+                        <td>❌ No Value</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Recommendation -->
+        <div class="recommendation">
+            <h3>💡 คำแนะนำการเดิมพัน</h3>
+            <p><strong>✅ BET: UNDER 1.5/2 @ 2.09</strong></p>
+            <p>Edge: +17.2% | Expected Value: +35.9% | ความมั่นใจ: HIGH</p>
+            <p>แนะนำใช้เงินเดิมพัน: 5-8% ของเงินทุน</p>
+        </div>
+
+        <!-- Warning -->
+        <div class="warning">
+            <h4>⚠️ ข้อควรระวัง</h4>
+            <ul>
+                <li>การพนันมีความเสี่ยง - เดิมพันเท่าที่สามารถเสียได้</li>
+                <li>ระบบไม่ได้ถูก 100% - ใช้เป็นเครื่องมือช่วยตัดสินใจ</li>
+                <li>ตรวจสอบข้อมูลล่าสุดก่อนเดิมพันจริง</li>
+                <li>จัดการเงินทุนอย่างระมัดระวัง</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>🤖 สร้างโดย Ultra Advanced Football Predictor</p>
+            <p>⚽ ระบบวิเคราะห์ Value Bet อัตโนมัติ</p>
+            <p>📊 ความแม่นยำระดับมืออาชีพ 60%+</p>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+                อัพเดทล่าสุด: 12 ก.ค. 2568 | 
+                <a href="https://github.com/yourusername/football-predictor" style="color: white;">GitHub Repository</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate stat cards on load
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.6s ease';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 200);
+            });
+
+            // Add click effect to value bet cards
+            const valueBetCards = document.querySelectorAll('.value-bet-card');
+            valueBetCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            });
+
+            // Update timestamp
+            const now = new Date();
+            const thaiTime = now.toLocaleString('th-TH', {
+                timeZone: 'Asia/Bangkok',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            const footerText = document.querySelector('.footer p:last-child');
+            if (footerText) {
+                footerText.innerHTML = `อัพเดทล่าสุด: ${thaiTime} | 
+                    <a href="https://github.com/yourusername/football-predictor" style="color: white;">GitHub Repository</a>`;
+            }
+        });
+    </script>
+</body>
+</html>
