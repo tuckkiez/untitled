@@ -2,105 +2,134 @@ import React from 'react';
 import { Table, Tag, Space, Typography, Avatar } from 'antd';
 import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
+import './MatchTable.css';
 
 const { Text } = Typography;
 
 const PreviousResults = ({ matches, loading }) => {
+  // Same color scheme as MatchTable
   const getConfidenceColor = (confidence) => {
-    if (confidence >= 75) return 'success';
-    if (confidence >= 65) return 'success';
-    if (confidence >= 50) return 'success';
-    return 'error';
+    if (confidence >= 50) return 'success';  // เขียว - ผ่านเกณฑ์
+    return 'error';                          // แดง - ไม่ผ่านเกณฑ์
   };
 
   const getConfidenceStyle = (confidence) => {
-    if (confidence >= 75) return { backgroundColor: '#095f00', borderColor: '#b7eb8f' };
-    if (confidence >= 65) return { backgroundColor: '#095f00', borderColor: '#91d5ff' };
-    if (confidence >= 50) return { backgroundColor: '#095f00', borderColor: '#ffd591' };
-    return { backgroundColor: '#a11219', borderColor: '#ffccc7' };
+    if (confidence >= 80) return { 
+      backgroundColor: 'rgba(82, 196, 26, 0.12)', 
+      borderColor: 'rgba(82, 196, 26, 0.35)',
+      color: '#95de64'
+    };
+    if (confidence >= 70) return { 
+      backgroundColor: 'rgba(82, 196, 26, 0.10)', 
+      borderColor: 'rgba(82, 196, 26, 0.30)',
+      color: '#73d13d'
+    };
+    if (confidence >= 60) return { 
+      backgroundColor: 'rgba(82, 196, 26, 0.08)', 
+      borderColor: 'rgba(82, 196, 26, 0.25)',
+      color: '#52c41a'
+    };
+    if (confidence >= 50) return { 
+      backgroundColor: 'rgba(82, 196, 26, 0.06)', 
+      borderColor: 'rgba(82, 196, 26, 0.20)',
+      color: '#389e0d'
+    };
+    // ต่ำกว่า 50% = แดง
+    return { 
+      backgroundColor: 'rgba(255, 77, 79, 0.12)', 
+      borderColor: 'rgba(255, 77, 79, 0.35)',
+      color: '#ff7875'
+    };
   };
 
   const renderResultCell = (prediction, result) => {
     if (!prediction) return '-';
 
     const isCorrect = result?.isCorrect;
+    const confidence = Math.round(prediction.confidence);
     
     return (
-      <div style={{ 
-        padding: '8px 12px', 
-        borderRadius: '6px',
-        ...getConfidenceStyle(prediction.confidence),
-        position: 'relative',
-        minHeight: '60px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}>
-        {/* Large Result Icon */}
-        <div style={{ marginBottom: '4px' }}>
+      <div 
+        className="prediction-cell"
+        style={{ 
+          padding: '12px 14px', 
+          borderRadius: '10px',
+          border: '1px solid',
+          ...getConfidenceStyle(confidence),
+          position: 'relative',
+          minHeight: '65px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between'
+        }}
+      >
+        {/* Result Icon */}
+        <div style={{ position: 'absolute', top: '8px', right: '8px' }}>
           {isCorrect === true ? (
-            <Avatar 
-              size={32}
-              style={{ 
-                backgroundColor: '#52c41a',
-                boxShadow: '0 2px 8px rgba(82, 196, 26, 0.3)'
-              }}
-              icon={<CheckCircleOutlined />}
-            />
+            <CheckCircleOutlined style={{ color: '#52c41a', fontSize: '16px' }} />
           ) : isCorrect === false ? (
-            <Avatar 
-              size={32}
-              style={{ 
-                backgroundColor: '#ff4d4f',
-                boxShadow: '0 2px 8px rgba(255, 77, 79, 0.3)'
-              }}
-              icon={<CloseCircleOutlined />}
-            />
-          ) : (
-            <Avatar 
-              size={32}
-              style={{ 
-                backgroundColor: '#faad14',
-                boxShadow: '0 2px 8px rgba(250, 173, 20, 0.3)'
-              }}
-            >
-              ?
-            </Avatar>
-          )}
+            <CloseCircleOutlined style={{ color: '#ff4d4f', fontSize: '16px' }} />
+          ) : null}
         </div>
         
         {/* Prediction Text */}
         <div style={{ 
-          fontSize: '11px', 
-          fontWeight: '500', 
-          marginBottom: '2px',
-          textAlign: 'center',
-          lineHeight: '1.2'
+          fontSize: '13px', 
+          fontWeight: '600', 
+          marginBottom: '8px',
+          lineHeight: '1.3',
+          paddingRight: '20px'
         }}>
           {prediction.prediction}
         </div>
         
-        {/* Confidence Badge */}
-        <Tag 
-          color={getConfidenceColor(prediction.confidence)} 
-          size="small"
-          style={{ fontSize: '10px', margin: 0 }}
-        >
-          {prediction.confidence}%
-        </Tag>
-        
-        {/* Actual Outcome */}
-        {result?.actualOutcome && (
-          <div style={{ 
-            fontSize: '9px', 
-            color: '#666', 
-            marginTop: '2px',
-            textAlign: 'center'
-          }}>
-            Actual: {result.actualOutcome}
-          </div>
-        )}
+        {/* Bottom Row */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <Tag 
+            color={getConfidenceColor(confidence)} 
+            style={{ 
+              fontSize: '11px', 
+              fontWeight: '600',
+              margin: 0,
+              padding: '3px 8px',
+              borderRadius: '6px',
+              border: 'none'
+            }}
+          >
+            {confidence}%
+          </Tag>
+          
+          {confidence >= 80 && (
+            <span style={{ 
+              fontSize: '11px', 
+              color: '#95de64', 
+              fontWeight: '700',
+              textShadow: '0 0 4px rgba(149, 222, 100, 0.5)'
+            }}>
+              🔥 HOT
+            </span>
+          )}
+          
+          {confidence >= 70 && confidence < 80 && (
+            <span style={{ 
+              fontSize: '11px', 
+              color: '#73d13d', 
+              fontWeight: '600' 
+            }}>
+              ⭐ GOOD
+            </span>
+          )}
+          
+          {confidence < 50 && (
+            <span style={{ 
+              fontSize: '11px', 
+              color: '#ff7875', 
+              fontWeight: '600' 
+            }}>
+              ⚠️ LOW
+            </span>
+          )}
+        </div>
       </div>
     );
   };
@@ -112,27 +141,23 @@ const PreviousResults = ({ matches, loading }) => {
       key: 'match',
       width: 250,
       render: (_, record) => (
-        <div>
-          <div style={{ fontWeight: '600', marginBottom: '4px' }}>
+        <div className="match-info">
+          <div className="match-teams" style={{ marginBottom: '6px' }}>
             <Space>
-              <Text>{record.homeTeam} vs {record.awayTeam}</Text>
-              <Tag size="small" color="blue">#{record.id}</Tag>
+              <Text style={{ color: '#ffffff', fontWeight: '600' }}>
+                {record.homeTeam} vs {record.awayTeam}
+              </Text>
+              <Tag size="small" color="blue" style={{ borderRadius: '4px' }}>
+                #{record.id}
+              </Tag>
             </Space>
           </div>
-          <div style={{ fontSize: '12px', color: '#666', marginBottom: '4px' }}>
-            {dayjs(record.matchDate).format('MMM DD')} {record.matchTime}
+          <div className="match-date" style={{ marginBottom: '4px' }}>
+            📅 {dayjs(record.matchDate).format('MMM DD')} ⏰ {record.matchTime}
           </div>
           {record.homeScore !== null && record.awayScore !== null && (
-            <div style={{ 
-              fontSize: '14px', 
-              color: '#1890ff', 
-              fontWeight: '700',
-              padding: '2px 8px',
-              backgroundColor: '#e6f7ff',
-              borderRadius: '4px',
-              display: 'inline-block'
-            }}>
-              {record.homeScore} - {record.awayScore}
+            <div className="match-score">
+              ⚽ Score: {record.homeScore} - {record.awayScore}
             </div>
           )}
         </div>
@@ -142,7 +167,7 @@ const PreviousResults = ({ matches, loading }) => {
       title: 'Match Result',
       dataIndex: 'matchResult',
       key: 'matchResult',
-      width: 120,
+      width: 150,
       render: (_, record) => {
         const prediction = record.predictions?.find(p => p.category === 'MATCH_RESULT');
         const result = record.results?.find(r => r.category === 'MATCH_RESULT');
@@ -153,7 +178,7 @@ const PreviousResults = ({ matches, loading }) => {
       title: 'Handicap',
       dataIndex: 'handicap',
       key: 'handicap',
-      width: 120,
+      width: 150,
       render: (_, record) => {
         const prediction = record.predictions?.find(p => p.category === 'HANDICAP');
         const result = record.results?.find(r => r.category === 'HANDICAP');
@@ -164,7 +189,7 @@ const PreviousResults = ({ matches, loading }) => {
       title: 'Over/Under',
       dataIndex: 'overUnder',
       key: 'overUnder',
-      width: 120,
+      width: 150,
       render: (_, record) => {
         const prediction = record.predictions?.find(p => p.category === 'OVER_UNDER');
         const result = record.results?.find(r => r.category === 'OVER_UNDER');
@@ -175,7 +200,7 @@ const PreviousResults = ({ matches, loading }) => {
       title: 'Corners',
       dataIndex: 'corners',
       key: 'corners',
-      width: 120,
+      width: 150,
       render: (_, record) => {
         const prediction = record.predictions?.find(p => p.category === 'CORNERS');
         const result = record.results?.find(r => r.category === 'CORNERS');
@@ -197,16 +222,24 @@ const PreviousResults = ({ matches, loading }) => {
         locale={{
           emptyText: 'No previous results available'
         }}
+        style={{
+          backgroundColor: 'transparent'
+        }}
+        className="dark-table"
+        rowClassName={(record, index) => 
+          index % 2 === 0 ? 'table-row-even' : 'table-row-odd'
+        }
       />
       
       {matches && matches.length > 0 && (
         <div style={{ 
           marginTop: '16px', 
           padding: '12px', 
-          backgroundColor: 'rgba(24, 144, 255, 0.1)', 
-          borderRadius: '6px',
+          backgroundColor: 'rgba(255, 255, 255, 0.02)', 
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          borderRadius: '8px',
           fontSize: '12px',
-          color: '#666'
+          color: '#b0b0b0'
         }}>
           <Space>
             <CheckCircleOutlined style={{ color: '#52c41a' }} />
@@ -214,7 +247,7 @@ const PreviousResults = ({ matches, loading }) => {
             <CloseCircleOutlined style={{ color: '#ff4d4f' }} />
             <span>Incorrect Prediction</span>
             <span>•</span>
-            <span>Showing results from last 2 weeks</span>
+            <span>Background colors show confidence levels (Red: &lt;50%, Green: ≥50%)</span>
           </Space>
         </div>
       )}
