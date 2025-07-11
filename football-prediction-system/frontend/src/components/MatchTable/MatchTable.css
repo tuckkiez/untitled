@@ -1,0 +1,110 @@
+/* Dark Theme Table Styling */
+.dark-table .ant-table-thead > tr > th {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #e0e0e0 !important;
+}
+
+.dark-table .ant-table-tbody > tr > td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+  background-color: transparent !important;
+}
+
+.dark-table .ant-table-tbody > tr:hover > td {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.table-row-even {
+  background-color: rgba(255, 255, 255, 0.01) !important;
+}
+
+.table-row-odd {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+.table-row-even:hover,
+.table-row-odd:hover {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Prediction Cell Styling */
+.prediction-cell {
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.prediction-cell:hover {
+  transform: translateY(-1px);
+  box-shadow: 
+    inset 0 1px 3px rgba(0, 0, 0, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Match Info Styling */
+.match-info {
+  color: #e0e0e0;
+}
+
+.match-info .match-teams {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.match-info .match-date {
+  color: #a0a0a0;
+  font-size: 12px;
+}
+
+.match-info .match-score {
+  color: #64b5f6;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* Tag Styling */
+.ant-tag {
+  border-radius: 6px;
+  font-weight: 500;
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Success tags (green) */
+.ant-tag-success {
+  background-color: rgba(82, 196, 26, 0.15) !important;
+  border-color: rgba(82, 196, 26, 0.3) !important;
+  color: #95de64 !important;
+}
+
+/* Error tags (red) */
+.ant-tag-error {
+  background-color: rgba(255, 77, 79, 0.15) !important;
+  border-color: rgba(255, 77, 79, 0.3) !important;
+  color: #ff7875 !important;
+}
+
+/* Confidence indicators */
+.confidence-high {
+  position: relative;
+}
+
+.confidence-high::after {
+  content: '🔥';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  font-size: 10px;
+}
+
+.confidence-good {
+  position: relative;
+}
+
+.confidence-good::after {
+  content: '⭐';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  font-size: 10px;
+}
