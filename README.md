@@ -1,105 +1,154 @@
-# 🔥 Ultra Football Predictor - Today's Predictions
+# 🚀 Ultra Advanced Football Predictor
 
-> AI-powered football predictions with **75% accuracy** | Live predictions for today's matches
+ระบบทำนายผลฟุตบอลที่ทันสมัยและแม่นยำที่สุด ใช้เทคโนโลยี Machine Learning ขั้นสูง **พร้อมการวิเคราะห์ Value Bet แบบเรียลไทม์**
 
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://tuckkiez.github.io/untitled/)
-[![AI Powered](https://img.shields.io/badge/AI-Powered-blue)](https://github.com/tuckkiez/untitled)
-[![Accuracy](https://img.shields.io/badge/Accuracy-75%25-success)](https://github.com/tuckkiez/untitled)
+## 🏆 ผลการทดสอบ (Backtest จริง)
 
-## 🎯 Live Demo
+| ประเภทการทำนาย | ความแม่นยำ | เปรียบเทียบ |
+|----------------|------------|-------------|
+| **ผลการแข่งขัน** | **60.0%** | +33% จากระบบเดิม |
+| **Handicap** | **60.0%** | ระดับมืออาชีพ |
+| **Value Bet Detection** | **25.0%** | 🔥 ใหม่! |
+| **เมื่อมั่นใจสูง (>60%)** | **75.0%** | 🔥 แม่นมาก |
 
-**🌐 [View Live Predictions](https://tuckkiez.github.io/untitled/)**
+## 🆕 ฟีเจอร์ใหม่: Value Bet Analysis
 
-## ⚡ Features
+### 📊 การวิเคราะห์วันนี้ (12 ก.ค.)
+**ซีเอ อัลไดรี่ vs เซ็นทรัล คอร์โดบา เอสดีอี**
+- ✅ **Value Bet พบ**: 2 รายการ
+- 🥇 **UNDER 1.5/2** @ 2.09 (Edge +17.2%)
+- 🥈 **ทีมเยือนชนะ** @ 2.53 (Edge +5.5%)
+- 🎯 **คำแนะนำหลัก**: BET Under 1.5/2
 
-- **🔥 Today's Predictions** - Live AI predictions for today's matches
-- **4 Prediction Types** - Match Result, Handicap, Over/Under, Corners
-- **Real-time Updates** - Live countdown to match kickoff
-- **High Accuracy** - 75% average prediction accuracy
-- **Mobile Responsive** - Works perfectly on all devices
-- **Beautiful UI** - Modern gradient design with smooth animations
+[📋 ดูการวิเคราะห์เต็ม](TODAY_ANALYSIS_SUMMARY.md)
 
-## 📊 Current Predictions
+## ⚡ Quick Start
 
-### 🇦🇷 Argentina Primera Division
-**Aldosivi vs Central Córdoba** - Tonight 01:30
-
-| Prediction Type | Result | Confidence | Odds |
-|----------------|--------|------------|------|
-| ⚽ **Match Result** | Central Córdoba Win | **75%** | @2.10 |
-| 📊 **Handicap** | Central Córdoba -0.5 | **68%** | @1.85 |
-| 🎯 **Over/Under** | Under 2.5 Goals | **65%** | @1.75 |
-| 🚩 **Corners** | Under 10.5 Corners | **70%** | @1.80 |
-
-## 🧠 AI Analysis
-
-Our advanced machine learning system analyzes:
-- **Head-to-Head Records** - Historical match data
-- **Team Statistics** - Current form and performance
-- **Real Data Sources** - thestatsdontlie.com integration
-- **Advanced Algorithms** - Random Forest + Gradient Boosting ensemble
-
-## 🚀 Quick Start
-
-### Option 1: View Live Site
-Simply visit: **[https://tuckkiez.github.io/untitled/](https://tuckkiez.github.io/untitled/)**
-
-### Option 2: Run Locally
 ```bash
-# Clone the repository (if you have access)
-git clone https://github.com/tuckkiez/untitled.git
+# ทำนายพร้อมวิเคราะห์ Value Bet (ราคาที่ถูกต้อง!)
+python corrected_value_bet_analyzer.py
 
-# Navigate to directory
-cd untitled
+# ทำนายแบบง่าย (ไม่ต้องติดตั้ง Library)
+python simple_value_bet_analyzer.py
 
-# Open in browser
-open index.html
+# ทำนายแบบเดิม
+python ultra_predictor_fixed.py
+
+# ทดสอบความแม่นยำ
+python test_ultra_fixed.py
+
+# ทดสอบ Handicap
+python test_handicap_20_games.py
 ```
 
-## 📈 Performance Stats
+## 🎯 ตัวอย่างการใช้งาน
 
-- **Overall Accuracy**: 69.5%
-- **Match Results**: 75% accuracy
-- **Corners Predictions**: 70% accuracy
-- **Over/Under Goals**: 65% accuracy
-- **Handicap Betting**: 68% accuracy
+```python
+from ultra_predictor_fixed import UltraAdvancedPredictor
 
-## 🔒 Privacy & Security
+# สร้างและเทรนโมเดล
+predictor = UltraAdvancedPredictor()
+data = predictor.load_premier_league_data()
+predictor.train_ensemble_models(data)
 
-- **Repository**: Private (code protected)
-- **GitHub Pages**: Public (website accessible)
-- **Data**: No sensitive information exposed
-- **Analytics**: Privacy-focused tracking
+# ทำนายการแข่งขัน
+result = predictor.predict_match_ultra("Arsenal", "Chelsea")
+print(f"ทำนาย: {result['prediction']} ({result['confidence']:.1%})")
+```
 
-## 🎨 Technology Stack
+## 📊 เทคโนโลยีที่ใช้
 
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
-- **Design**: CSS Grid, Flexbox, CSS Animations
-- **AI/ML**: Python, Scikit-learn, Pandas
-- **Data Sources**: thestatsdontlie.com, Football APIs
-- **Deployment**: GitHub Pages
+- **ELO Rating System** - ระบบคะแนนแบบไดนามิก
+- **Ensemble Learning** - รวม 5 โมเดล ML
+- **Advanced Features** - 30 features ขั้นสูง
+- **Real Data** - ข้อมูลจริงจาก Premier League API
 
-## 🔄 Updates
+## 📁 โครงสร้างโปรเจค
 
-The predictions are updated in real-time based on:
-- Latest team form and statistics
-- Injury reports and team news
-- Weather conditions
-- Market odds analysis
+```
+├── simple_value_bet_analyzer.py      # 🔥 ระบบ Value Bet ใหม่!
+├── today_predictions_with_odds.py    # การทำนายวันนี้พร้อมราคาจริง
+├── ultra_predictor_fixed.py          # ระบบหลัก
+├── test_ultra_fixed.py               # ทดสอบย้อนหลัง
+├── test_handicap_20_games.py         # ทดสอบ Handicap
+├── TODAY_ANALYSIS_SUMMARY.md         # สรุปการวิเคราะห์วันนี้
+├── VALUE_BET_GUIDE.md                # 🔥 คู่มือ Value Bet
+├── README_ULTRA_ADVANCED.md          # คู่มือฉบับเต็ม
+├── QUICK_START.md                    # เริ่มต้นด่วน
+├── EXAMPLES_AND_USE_CASES.md         # ตัวอย่างการใช้งาน
+├── PERFORMANCE_BENCHMARKS.md         # การวิเคราะห์ประสิทธิภาพ
+└── requirements_advanced.txt         # Dependencies
+```
 
-## 📄 License
+## 🎲 ผลการทดสอบ Handicap
 
-This project is licensed under the MIT License.
+- **ผลการแข่งขัน**: 60.0% ความแม่นยำ
+- **Handicap**: 60.0% ความแม่นยำ  
+- **Over/Under**: 40.0% ความแม่นยำ
+- **ถูกทั้ง 3 ค่า**: 20.0%
 
-## 🌟 Support
+## 🔮 แผนการพัฒนา
 
-If you find this project helpful, please give it a ⭐ on GitHub!
+### Phase 1: ข้อมูลจริง (กำลังดำเนินการ)
+- [ ] Player Statistics API
+- [ ] Injury Data Integration
+- [ ] Real Weather Data
+- [ ] Market Odds Data
 
-## 📞 Contact
+### Phase 2: Deep Learning
+- [ ] Neural Networks
+- [ ] LSTM for Time Series
+- [ ] Transfer Learning
 
-- **GitHub**: [@tuckkiez](https://github.com/tuckkiez)
-- **Website**: [https://tuckkiez.github.io/untitled/](https://tuckkiez.github.io/untitled/)
+### Phase 3: Real-time
+- [ ] Live Data Feeds
+- [ ] Real-time Predictions
+- [ ] Mobile App
+
+## 📈 Performance Benchmarks
+
+| ระบบ | ความแม่นยำ | ระดับ |
+|------|------------|-------|
+| **Ultra Advanced (เรา)** | **60.0%** | 🥇 มืออาชีพ |
+| Professional Tipsters | 55-65% | 🥇 มืออาชีพ |
+| Market Odds | 50-55% | 🥈 ดี |
+| Traditional Analysis | 40-45% | 🥉 ปานกลาง |
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
+
+## 📜 License
+
+MIT License - ใช้งานได้อย่างอิสระ
+
+## 🏆 Credits
+
+- **Algorithm**: ELO Rating + Ensemble ML
+- **Data Source**: Football-data.org API
+- **Technology**: Python, Scikit-learn, Pandas
+- **Inspiration**: ความรักในฟุตบอลและ Data Science
 
 ---
 
-**🎯 Made with ❤️ for football fans worldwide** | **🚀 Powered by AI & Machine Learning**
+**🎯 ทำนายฟุตบอลด้วยความแม่นยำระดับมืออาชีพ 60%!** ⚽🚀
+
+## 🔥 ผลการวิเคราะห์ล่าสุด
+
+### การแข่งขันวันนี้: ซีเอ อัลไดรี่ vs เซ็นทรัล คอร์โดบา เอสดีอี
+- ✅ **Value Bet พบ**: 2 รายการ
+- 🥇 **UNDER 1.5/2** @ 2.09 (Edge +17.2%)
+- 🥈 **ทีมเยือนชนะ** @ 2.53 (Edge +5.5%)
+- 🎯 **คำแนะนำหลัก**: BET Under 1.5/2
+
+### สถิติประสิทธิภาพ
+- 🎯 **ความแม่นยำ**: 60.0%
+- 🔍 **Value Bet Detection**: 50.0% (2/4 ตัวเลือกหลัก)
+- 📊 **Edge เฉลี่ย**: +11.3%
+- 💰 **ROI คาดหวัง**: +24.9%
+
+[📋 ดูรายละเอียดเต็ม](VALUE_BET_GUIDE.md)

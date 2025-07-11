@@ -1,0 +1,141 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./football_predictions.db"
+}
+
+model League {
+  id          String   @id
+  name        String
+  country     String
+  season      String
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  matches     Match[]
+  stats       LeagueStats[]
+  
+  @@map("leagues")
+}
+
+model Match {
+  id          Int      @id @default(autoincrement())
+  externalId  String?  // API match ID
+  leagueId    String
+  homeTeam    String
+  awayTeam    String
+  matchDate   DateTime
+  matchTime   String
+  status      String   @default("UPCOMING") // UPCOMING, LIVE, FINISHED, POSTPONED, CANCELLED
+  
+  // Actual results (when match is finished)
+  homeScore   Int?
+  awayScore   Int?
+  
+  // Match metadata
+  round       String?
+  venue       String?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  league      League @relation(fields: [leagueId], references: [id])
+  predictions Prediction[]
+  results     Result[]
+  
+  @@map("matches")
+}
+
+model Prediction {
+  id          Int      @id @default(autoincrement())
+  matchId     Int
+  category    String   // MATCH_RESULT, HANDICAP, OVER_UNDER, CORNERS
+  prediction  String   // e.g., "Home Win", "Over 2.5", etc.
+  confidence  Float    // 0-100
+  
+  // ML model info
+  modelVersion String?
+  features     String?  // JSON string for feature data
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  match       Match @relation(fields: [matchId], references: [id])
+  results     Result[]
+  
+  @@unique([matchId, category])
+  @@map("predictions")
+}
+
+model Result {
+  id           Int      @id @default(autoincrement())
+  matchId      Int
+  predictionId Int
+  category     String   // MATCH_RESULT, HANDICAP, OVER_UNDER, CORNERS
+  isCorrect    Boolean
+  actualOutcome String  // What actually happened
+  
+  // Metadata
+  updatedBy    String?  // Admin who updated
+  notes        String?
+  
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  
+  // Relations
+  match        Match @relation(fields: [matchId], references: [id])
+  prediction   Prediction @relation(fields: [predictionId], references: [id])
+  
+  @@unique([matchId, category])
+  @@map("results")
+}
+
+model LeagueStats {
+  id                Int      @id @default(autoincrement())
+  leagueId          String
+  season            String
+  
+  // Accuracy stats by category
+  matchResultAcc    Float    @default(0)
+  handicapAcc       Float    @default(0)
+  overUnderAcc      Float    @default(0)
+  cornersAcc        Float    @default(0)
+  
+  // Total predictions
+  totalPredictions  Int      @default(0)
+  correctPredictions Int     @default(0)
+  
+  // Date range
+  periodStart       DateTime
+  periodEnd         DateTime
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  // Relations
+  league            League @relation(fields: [leagueId], references: [id])
+  
+  @@unique([leagueId, season, periodStart])
+  @@map("league_stats")
+}
+
+model SystemConfig {
+  id          Int      @id @default(autoincrement())
+  key         String   @unique
+  value       String
+  description String?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@map("system_config")
+}

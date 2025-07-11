@@ -6,39 +6,64 @@ on:
   pull_request:
     branches: [ main, master ]
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  deploy:
+  # Build job
+  build:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      - name: Checkout
+        uses: actions/checkout@v4
         
-    - name: Install dependencies
-      run: |
-        if [ -f package.json ]; then
-          npm ci
-        else
-          echo "No package.json found, skipping npm install"
-        fi
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
         
-    - name: Build
-      run: |
-        echo "Building static site..."
-        # Copy main files to build directory
-        mkdir -p build
-        cp index.html build/
-        cp -r assets build/ 2>/dev/null || echo "No assets directory found"
-        echo "Build completed"
-        
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
+      - name: Build
+        run: |
+          echo "Building static site..."
+          # Create build directory
+          mkdir -p _site
+          
+          # Copy main HTML file
+          cp index.html _site/
+          
+          # Copy other important files if they exist
+          [ -f README.md ] && cp README.md _site/ || echo "No README.md found"
+          [ -d assets ] && cp -r assets _site/ || echo "No assets directory found"
+          [ -d css ] && cp -r css _site/ || echo "No css directory found"
+          [ -d js ] && cp -r js _site/ || echo "No js directory found"
+          [ -d images ] && cp -r images _site/ || echo "No images directory found"
+          
+          # Copy Python files for reference
+          cp *.py _site/ 2>/dev/null || echo "No Python files found"
+          cp *.md _site/ 2>/dev/null || echo "No additional markdown files found"
+          
+          echo "Build completed successfully"
+          ls -la _site/
+          
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

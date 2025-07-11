@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 Football Prediction Dashboard - 5 Major Leagues</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+
+        .header {
+            background: rgba(20, 20, 30, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo h1 {
+            background: linear-gradient(45deg, #64b5f6, #42a5f5, #2196f3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+
+        .stats-summary {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #64b5f6;
+        }
+
+        .admin-access {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .admin-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .admin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(20, 20, 30, 0.98);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            min-width: 400px;
+        }
+
+        .admin-panel h3 {
+            color: #64b5f6;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .admin-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .admin-form input, .admin-form select {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 0.75rem;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+
+        .admin-form input::placeholder {
+            color: rgba(224, 224, 224, 0.6);
+        }
+
+        .admin-form button {
+            background: linear-gradient(45deg, #64b5f6, #2196f3);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .admin-form button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(100, 181, 246, 0.4);
+        }
+
+        .close-admin {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .league-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+
+        .league-tab {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #e0e0e0;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .league-tab.active {
+            background: linear-gradient(45deg, #64b5f6, #2196f3);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(100, 181, 246, 0.4);
+            border-color: transparent;
+        }
+
+        .league-tab:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 10px rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .league-tab.active:hover {
+            background: linear-gradient(45deg, #64b5f6, #2196f3);
+        }
+
+        .predictions-table {
+            background: rgba(20, 20, 30, 0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .table-header {
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            color: #e0e0e0;
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .table-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #64b5f6;
+        }
+
+        .table-subtitle {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .match-info {
+            text-align: left;
+            min-width: 200px;
+        }
+
+        .teams {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .match-id {
+            font-size: 0.75rem;
+            color: #888;
+            font-weight: 400;
+            background: rgba(255,255,255,0.05);
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .match-time {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .prediction-cell {
+            padding: 0.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            position: relative;
+        }
+
+        /* Dark mode color scheme for confidence levels */
+        .confidence-50 { background: rgba(76, 175, 80, 0.3); color: #a5d6a7; border: 1px solid rgba(76, 175, 80, 0.5); }
+        .confidence-55 { background: rgba(76, 175, 80, 0.4); color: #a5d6a7; border: 1px solid rgba(76, 175, 80, 0.6); }
+        .confidence-60 { background: rgba(76, 175, 80, 0.5); color: #c8e6c9; border: 1px solid rgba(76, 175, 80, 0.7); }
+        .confidence-65 { background: rgba(76, 175, 80, 0.6); color: #c8e6c9; border: 1px solid rgba(76, 175, 80, 0.8); }
+        .confidence-70 { background: rgba(76, 175, 80, 0.7); color: #e8f5e8; border: 1px solid rgba(76, 175, 80, 0.9); }
+        .confidence-75 { background: rgba(76, 175, 80, 0.8); color: #ffffff; border: 1px solid #4caf50; }
+        .confidence-80 { background: rgba(56, 142, 60, 0.9); color: #ffffff; border: 1px solid #388e3c; }
+        .confidence-85 { background: rgba(46, 125, 50, 0.95); color: #ffffff; border: 1px solid #2e7d32; }
+        .confidence-90 { background: #2e7d32; color: #ffffff; border: 1px solid #1b5e20; }
+        .confidence-95 { background: #1b5e20; color: #ffffff; border: 1px solid #0d4715; }
+
+        .confidence-below-50 { background: rgba(244, 67, 54, 0.3); color: #ffcdd2; border: 1px solid rgba(244, 67, 54, 0.5); }
+
+        .accuracy-badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 0.25rem;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .league-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(20, 20, 30, 0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card h3 {
+            color: #64b5f6;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-card .value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e0e0e0;
+        }
+
+        .legend {
+            background: rgba(20, 20, 30, 0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .legend h3 {
+            margin-bottom: 1rem;
+            color: #64b5f6;
+        }
+
+        .legend-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #b0b0b0;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(224, 224, 224, 0.6);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .stats-summary {
+                gap: 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+
+            .league-tabs {
+                gap: 0.5rem;
+            }
+
+            .league-tab {
+                padding: 0.75rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .admin-panel {
+                min-width: 90%;
+                margin: 1rem;
+            }
+
+            .teams {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+            }
+
+            .match-id {
+                font-size: 0.7rem;
+            }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #888;
+        }
+
+        .spinner {
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top: 3px solid #64b5f6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1500;
+        }
+
+        .admin-help {
+            background: rgba(100, 181, 246, 0.1);
+            border: 1px solid rgba(100, 181, 246, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: #b0b0b0;
+        }
+
+        .admin-help strong {
+            color: #64b5f6;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-futbol" style="font-size: 2rem; color: #64b5f6;"></i>
+                <h1>Football Prediction Dashboard</h1>
+            </div>
+            <div class="stats-summary">
+                <div class="stat-item">
+                    <div class="stat-value">1,750</div>
+                    <div>Total Matches</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">5</div>
+                    <div>Major Leagues</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">75%</div>
+                    <div>Best Accuracy</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Access Button -->
+    <div class="admin-access">
+        <button class="admin-btn" onclick="openAdminPanel()" title="Admin Access">
+            <i class="fas fa-cog"></i>
+        </button>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="overlay" id="overlay" onclick="closeAdminPanel()"></div>
+    <div class="admin-panel" id="adminPanel">
+        <button class="close-admin" onclick="closeAdminPanel()">
+            <i class="fas fa-times"></i>
+        </button>
+        <h3><i class="fas fa-shield-alt"></i> Admin Panel</h3>
+        
+        <div class="admin-help">
+            <strong>💡 How to use:</strong><br>
+            1. Find the Match ID (e.g., #1, #2) next to team names<br>
+            2. Enter the Match ID, select category and result<br>
+            3. Click "Update Result" to save changes
+        </div>
+        
+        <div class="admin-form">
+            <input type="number" id="matchId" placeholder="Match ID (e.g., 1, 2, 3...)" min="1">
+            <select id="category">
+                <option value="">Select Category</option>
+                <option value="matchResult">Match Result</option>
+                <option value="handicap">Handicap</option>
+                <option value="overUnder">Over/Under</option>
+                <option value="corners">Corners</option>
+            </select>
+            <select id="result">
+                <option value="">Select Result</option>
+                <option value="correct">Correct ✓</option>
+                <option value="incorrect">Incorrect ✗</option>
+            </select>
+            <button onclick="updateResult()">Update Result</button>
+            <button onclick="generateReport()" style="background: linear-gradient(45deg, #ff9800, #f57c00);">
+                Generate Report
+            </button>
+            <button onclick="searchMatch()" style="background: linear-gradient(45deg, #9c27b0, #7b1fa2);">
+                Search Match by ID
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Legend -->
+        <div class="legend">
+            <h3><i class="fas fa-info-circle"></i> Accuracy Color Guide</h3>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-color confidence-below-50"></div>
+                    <span>Below 50% (Low Confidence)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color confidence-50"></div>
+                    <span>50-54% (Fair)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color confidence-60"></div>
+                    <span>55-64% (Good)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color confidence-70"></div>
+                    <span>65-74% (Very Good)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color confidence-80"></div>
+                    <span>75%+ (Excellent)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- League Tabs -->
+        <div class="league-tabs">
+            <button class="league-tab active" onclick="showLeague('premier-league')">
+                <i class="fas fa-crown"></i> Premier League
+            </button>
+            <button class="league-tab" onclick="showLeague('la-liga')">
+                <i class="fas fa-star"></i> La Liga
+            </button>
+            <button class="league-tab" onclick="showLeague('bundesliga')">
+                <i class="fas fa-shield-alt"></i> Bundesliga
+            </button>
+            <button class="league-tab" onclick="showLeague('serie-a')">
+                <i class="fas fa-trophy"></i> Serie A
+            </button>
+            <button class="league-tab" onclick="showLeague('ligue-1')">
+                <i class="fas fa-medal"></i> Ligue 1
+            </button>
+        </div>
+
+        <!-- League Statistics -->
+        <div class="league-stats" id="league-stats">
+            <div class="stat-card">
+                <h3>Match Result</h3>
+                <div class="value">40%</div>
+            </div>
+            <div class="stat-card">
+                <h3>Handicap</h3>
+                <div class="value">35%</div>
+            </div>
+            <div class="stat-card">
+                <h3>Over/Under</h3>
+                <div class="value">50%</div>
+            </div>
+            <div class="stat-card">
+                <h3>Corners</h3>
+                <div class="value">67%</div>
+            </div>
+        </div>
+
+        <!-- Predictions Table -->
+        <div class="predictions-table">
+            <div class="table-header">
+                <h2 id="league-title">Premier League Predictions</h2>
+                <div class="table-subtitle">Advanced ML Analysis with Match ID Reference</div>
+            </div>
+            
+            <div id="table-content">
+                <!-- Table will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>🏆 Football Prediction Dashboard | Powered by Advanced Machine Learning | 5 Major European Leagues</p>
+        <p>Professional-grade predictions with Match ID tracking for easy admin management</p>
+    </footer>
+
+    <script src="prediction_data.js"></script>
+    <script src="prediction_dashboard.js"></script>
+    <script>
+        // Admin panel functions
+        function openAdminPanel() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('adminPanel').style.display = 'block';
+        }
+
+        function closeAdminPanel() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'none';
+        }
+
+        function updateResult() {
+            const matchId = parseInt(document.getElementById('matchId').value);
+            const category = document.getElementById('category').value;
+            const result = document.getElementById('result').value;
+
+            if (!matchId || !category || !result) {
+                alert('Please fill all fields');
+                return;
+            }
+
+            const isCorrect = result === 'correct';
+            
+            if (updateMatchResult(matchId, category, isCorrect)) {
+                alert(`✅ Updated Match #${matchId} - ${category}: ${result}`);
+                
+                // Clear form
+                document.getElementById('matchId').value = '';
+                document.getElementById('category').value = '';
+                document.getElementById('result').value = '';
+                
+                closeAdminPanel();
+            } else {
+                alert('❌ Failed to update result. Check if Match ID exists.');
+            }
+        }
+
+        function generateReport() {
+            const stats = getOverallStats();
+            
+            let report = `📊 ACCURACY REPORT\n`;
+            report += `==================\n`;
+            report += `Overall Accuracy: ${stats.overallAccuracy}%\n`;
+            report += `Total Matches: ${stats.totalMatches}\n\n`;
+            report += `Category Breakdown:\n`;
+            report += `- Match Result: ${stats.categoryAccuracies.matchResult}%\n`;
+            report += `- Handicap: ${stats.categoryAccuracies.handicap}%\n`;
+            report += `- Over/Under: ${stats.categoryAccuracies.overUnder}%\n`;
+            report += `- Corners: ${stats.categoryAccuracies.corners}%\n`;
+            
+            alert(report);
+        }
+
+        function searchMatch() {
+            const matchId = parseInt(document.getElementById('matchId').value);
+            
+            if (!matchId) {
+                alert('Please enter a Match ID to search');
+                return;
+            }
+
+            const matchInfo = getMatchById(matchId);
+            
+            if (matchInfo) {
+                const match = matchInfo.match;
+                let info = `🔍 MATCH DETAILS\n`;
+                info += `================\n`;
+                info += `Match ID: #${match.id}\n`;
+                info += `League: ${matchInfo.league}\n`;
+                info += `Teams: ${match.homeTeam} vs ${match.awayTeam}\n`;
+                info += `Date: ${match.date} ${match.time}\n\n`;
+                info += `PREDICTIONS:\n`;
+                info += `- Match Result: ${match.predictions.matchResult.prediction} (${match.predictions.matchResult.confidence}%)\n`;
+                info += `- Handicap: ${match.predictions.handicap.prediction} (${match.predictions.handicap.confidence}%)\n`;
+                info += `- Over/Under: ${match.predictions.overUnder.prediction} (${match.predictions.overUnder.confidence}%)\n`;
+                info += `- Corners: ${match.predictions.corners.prediction} (${match.predictions.corners.confidence}%)\n`;
+                
+                alert(info);
+            } else {
+                alert(`❌ Match #${matchId} not found`);
+            }
+        }
+    </script>
+</body>
+</html>
