@@ -246,26 +246,26 @@
         <div class="header">
             <h1>🏆 J-League 2 Advanced ML Predictions - ผลจริง</h1>
             <div class="subtitle">July 12, 2025 • ผลการแข่งขันจริงและการวิเคราะห์ความแม่นยำ</div>
-            <div class="subtitle">🎯 ความแม่นยำรวม 75.0% • ผลการแข่งขัน 100% • Over/Under 70% • Corner 1st Half 80%</div>
+            <div class="subtitle">🎯 ความแม่นยำรวม 55.0% • ผลการแข่งขัน 40% • Over/Under 70% • Corner 1st Half 60%</div>
             <div class="subtitle">📊 ผลจริง: สกอร์ • เตะมุม • การทำนายที่ถูกต้อง ✅❌</div>
         </div>
 
         <div class="stats-summary">
             <div class="stat-card">
-                <div class="stat-value">75.0%</div>
+                <div class="stat-value">55.0%</div>
                 <div class="stat-label">ความแม่นยำเฉลี่ย</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">100%</div>
-                <div class="stat-label">ผลการแข่งขัน (10/10)</div>
+                <div class="stat-value">40.0%</div>
+                <div class="stat-label">ผลการแข่งขัน (4/10)</div>
             </div>
             <div class="stat-card">
                 <div class="stat-value">70.0%</div>
                 <div class="stat-label">Over/Under (7/10)</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">80.0%</div>
-                <div class="stat-label">Corner 1st Half (8/10)</div>
+                <div class="stat-value">60.0%</div>
+                <div class="stat-label">Corner 1st Half (6/10)</div>
             </div>
             <div class="stat-card">
                 <div class="stat-value">50.0%</div>
@@ -285,15 +285,16 @@
         </div>
 
         <div class="footer">
-            <h3>🏆 สรุปผลการทำนาย J-League 2 วันที่ 12 กรกฎาคม 2025</h3>
-            <p><strong>🎯 ความแม่นยำรวม: 75.0%</strong> - ผลการแข่งขัน 100% (10/10) • Over/Under 70% (7/10) • Corner 1st Half 80% (8/10) • Corner Full Match 50% (5/10)</p>
-            <p>🤖 ระบบ Advanced ML ด้วย Ensemble Learning + Real Odds Integration ให้ผลลัพธ์ที่แม่นยำในระดับมืออาชีพ</p>
+            <h3>🏆 สรุปผลการทำนาย J-League 2 วันที่ 12 กรกฎาคม 2025 (ผลจริงที่ถูกต้อง)</h3>
+            <p><strong>🎯 ความแม่นยำรวม: 55.0%</strong> - ผลการแข่งขัน 40% (4/10) • Over/Under 70% (7/10) • Corner 1st Half 60% (6/10) • Corner Full Match 50% (5/10)</p>
+            <p>🤖 ระบบ Advanced ML ด้วย Ensemble Learning + Real Odds Integration - การเรียนรู้และปรับปรุงต่อไป</p>
             <p>📊 ข้อมูลจริง: สกอร์ทุกคู่ • จำนวนเตะมุมครึ่งแรกและรวม • ไอคอนแสดงการทำนายที่ถูก ✅ ผิด ❌</p>
+            <p>🔥 ผลโดดเด่น: Over/Under 70% • Jubilo Iwata 5-1 Consadole Sapporo (ทำนายถูก Home Win + Over 2.5)</p>
         </div>
     </div>
 
     <script>
-        // Enhanced J-League 2 data with real odds, corrected corner predictions, and actual results
+        // Enhanced J-League 2 data with real odds, corrected corner predictions, and CORRECT actual results
         var allPredictions = [
             {
                 homeTeam: "Mito Hollyhock",
@@ -312,16 +313,16 @@
                 valueAssessment: "high",
                 avgConfidence: 76.1,
                 actualResult: {
-                    score: "2-0",
+                    score: "3-0",
                     result: "Home Win",
-                    totalGoals: 2,
-                    corners1st: 4,
-                    cornersTotal: 8,
+                    totalGoals: 3,
+                    corners1st: 5,
+                    cornersTotal: 11,
                     predictions: {
                         matchResult: true,
-                        overUnder: false,
+                        overUnder: true,
                         corner1stHalf: false,
-                        cornerFullMatch: false
+                        cornerFullMatch: true
                     }
                 }
             },
@@ -342,13 +343,13 @@
                 valueAssessment: "good",
                 avgConfidence: 63.9,
                 actualResult: {
-                    score: "1-2",
-                    result: "Away Win",
-                    totalGoals: 3,
+                    score: "3-2",
+                    result: "Home Win",
+                    totalGoals: 5,
                     corners1st: 6,
-                    cornersTotal: 12,
+                    cornersTotal: 13,
                     predictions: {
-                        matchResult: true,
+                        matchResult: false,
                         overUnder: true,
                         corner1stHalf: false,
                         cornerFullMatch: true
@@ -402,13 +403,13 @@
                 valueAssessment: "high",
                 avgConfidence: 72.9,
                 actualResult: {
-                    score: "0-0",
-                    result: "Draw",
-                    totalGoals: 0,
-                    corners1st: 3,
-                    cornersTotal: 7,
+                    score: "1-0",
+                    result: "Home Win",
+                    totalGoals: 1,
+                    corners1st: 4,
+                    cornersTotal: 8,
                     predictions: {
-                        matchResult: true,
+                        matchResult: false,
                         overUnder: true,
                         corner1stHalf: true,
                         cornerFullMatch: false
@@ -432,13 +433,13 @@
                 valueAssessment: "good",
                 avgConfidence: 60.4,
                 actualResult: {
-                    score: "0-1",
-                    result: "Away Win",
+                    score: "1-0",
+                    result: "Home Win",
                     totalGoals: 1,
-                    corners1st: 2,
-                    cornersTotal: 9,
+                    corners1st: 3,
+                    cornersTotal: 7,
                     predictions: {
-                        matchResult: true,
+                        matchResult: false,
                         overUnder: true,
                         corner1stHalf: true,
                         cornerFullMatch: false
@@ -462,14 +463,14 @@
                 valueAssessment: "low",
                 avgConfidence: 59.3,
                 actualResult: {
-                    score: "1-1",
-                    result: "Draw",
-                    totalGoals: 2,
-                    corners1st: 4,
-                    cornersTotal: 11,
+                    score: "2-1",
+                    result: "Home Win",
+                    totalGoals: 3,
+                    corners1st: 5,
+                    cornersTotal: 12,
                     predictions: {
-                        matchResult: true,
-                        overUnder: true,
+                        matchResult: false,
+                        overUnder: false,
                         corner1stHalf: true,
                         cornerFullMatch: true
                     }
@@ -492,13 +493,13 @@
                 valueAssessment: "high",
                 avgConfidence: 71.5,
                 actualResult: {
-                    score: "0-2",
-                    result: "Away Win",
-                    totalGoals: 2,
-                    corners1st: 3,
-                    cornersTotal: 8,
+                    score: "0-0",
+                    result: "Draw",
+                    totalGoals: 0,
+                    corners1st: 2,
+                    cornersTotal: 6,
                     predictions: {
-                        matchResult: true,
+                        matchResult: false,
                         overUnder: true,
                         corner1stHalf: true,
                         cornerFullMatch: false
@@ -522,16 +523,16 @@
                 valueAssessment: "good",
                 avgConfidence: 62.6,
                 actualResult: {
-                    score: "1-3",
+                    score: "0-1",
                     result: "Away Win",
-                    totalGoals: 4,
-                    corners1st: 5,
-                    cornersTotal: 13,
+                    totalGoals: 1,
+                    corners1st: 4,
+                    cornersTotal: 9,
                     predictions: {
                         matchResult: true,
-                        overUnder: true,
+                        overUnder: false,
                         corner1stHalf: true,
-                        cornerFullMatch: true
+                        cornerFullMatch: false
                     }
                 }
             },
@@ -552,16 +553,16 @@
                 valueAssessment: "high",
                 avgConfidence: 75.8,
                 actualResult: {
-                    score: "0-3",
-                    result: "Away Win",
-                    totalGoals: 3,
-                    corners1st: 6,
-                    cornersTotal: 11,
+                    score: "1-1",
+                    result: "Draw",
+                    totalGoals: 2,
+                    corners1st: 5,
+                    cornersTotal: 10,
                     predictions: {
-                        matchResult: true,
-                        overUnder: false,
-                        corner1stHalf: true,
-                        cornerFullMatch: true
+                        matchResult: false,
+                        overUnder: true,
+                        corner1stHalf: false,
+                        cornerFullMatch: false
                     }
                 }
             },
@@ -582,16 +583,16 @@
                 valueAssessment: "high",
                 avgConfidence: 72.9,
                 actualResult: {
-                    score: "3-1",
+                    score: "5-1",
                     result: "Home Win",
-                    totalGoals: 4,
-                    corners1st: 4,
-                    cornersTotal: 9,
+                    totalGoals: 6,
+                    corners1st: 6,
+                    cornersTotal: 14,
                     predictions: {
                         matchResult: true,
                         overUnder: true,
-                        corner1stHalf: true,
-                        cornerFullMatch: false
+                        corner1stHalf: false,
+                        cornerFullMatch: true
                     }
                 }
             }
