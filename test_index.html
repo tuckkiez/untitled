@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test J-League 2 Data Loading</title>
+</head>
+<body>
+    <h1>Testing J-League 2 Data</h1>
+    <div id="test-output"></div>
+    
+    <script src="jleague2_data.js"></script>
+    <script>
+        console.log('Testing data loading...');
+        console.log('allPredictions:', allPredictions);
+        console.log('Number of matches:', allPredictions ? allPredictions.length : 'undefined');
+        
+        const output = document.getElementById('test-output');
+        if (allPredictions && allPredictions.length > 0) {
+            output.innerHTML = `
+                <p>✅ Data loaded successfully!</p>
+                <p>Number of matches: ${allPredictions.length}</p>
+                <p>First match: ${allPredictions[0].homeTeam} vs ${allPredictions[0].awayTeam}</p>
+            `;
+        } else {
+            output.innerHTML = `
+                <p>❌ Data not loaded or empty</p>
+                <p>allPredictions: ${typeof allPredictions}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

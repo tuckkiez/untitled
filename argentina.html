@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇦🇷 Argentina Primera - Aldosivi vs Central Córdoba</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 25px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .match-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .match-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .match-header h2 {
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        
+        .match-time {
+            color: #a0a0a0;
+            font-size: 1rem;
+        }
+        
+        .value-bets {
+            margin-bottom: 30px;
+        }
+        
+        .value-bets h3 {
+            color: #4ade80;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .bet-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .bet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .bet-name {
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+        
+        .bet-odds {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .bet-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .bet-detail {
+            text-align: center;
+        }
+        
+        .bet-detail-label {
+            font-size: 0.8rem;
+            color: #a0a0a0;
+            margin-bottom: 5px;
+        }
+        
+        .bet-detail-value {
+            font-weight: 600;
+            color: #ffffff;
+        }
+        
+        .edge-positive {
+            color: #4ade80;
+        }
+        
+        .confidence-high {
+            color: #4ade80;
+        }
+        
+        .confidence-medium {
+            color: #fbbf24;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .footer p {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🇦🇷 Argentina Primera Nacional</h1>
+            <p>Historical Match Analysis - Aldosivi vs Central Córdoba</p>
+            
+            <div class="nav-links">
+                <a href="argentina.html" class="nav-link active">🇦🇷 Argentina Primera</a>
+                <a href="index.html" class="nav-link">🇯🇵 J-League 2</a>
+            </div>
+        </div>
+
+        <div class="match-card">
+            <div class="match-header">
+                <h2>🏆 Aldosivi vs Central Córdoba</h2>
+                <div class="match-time">⏰ July 12, 01:30 GMT-3 (Completed)</div>
+            </div>
+
+            <div class="value-bets">
+                <h3>🔥 Value Bets Found</h3>
+                
+                <div class="bet-item">
+                    <div class="bet-header">
+                        <div class="bet-name">🥇 UNDER 1.5/2 Goals</div>
+                        <div class="bet-odds">@ 2.09</div>
+                    </div>
+                    <div class="bet-details">
+                        <div class="bet-detail">
+                            <div class="bet-detail-label">Edge</div>
+                            <div class="bet-detail-value edge-positive">+17.2%</div>
+                        </div>
+                        <div class="bet-detail">
+                            <div class="bet-detail-label">Confidence</div>
+                            <div class="bet-detail-value confidence-high">HIGH</div>
+                        </div>
+                        <div class="bet-detail">
+                            <div class="bet-detail-label">Fair Odds</div>
+                            <div class="bet-detail-value">1.78</div>
+                        </div>
+                        <div class="bet-detail">
+                            <div class="bet-detail-label">Probability</div>
+                            <div class="bet-detail-value">56.2%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bet-item">
+                    <div class="bet-header">
+                        <div class="bet-name">🥈 Central Córdoba Win</div>
+                        <div class="bet-odds">@ 2.53</div>
+                    </div>
+                    <div class="bet-details">
+                        <div class="bet-detail">
+                            <div class="bet-detail-label">Edge</div>
+                            <div class="bet-detail-value edge-positive">+5.5%</div>
+                        </div>
+                        <div class="bet-detail">
+                            <div class="bet-detail-label">Confidence</div>
+                            <div class="bet-detail-value confidence-medium">MEDIUM</div>
+                        </div>
+                        <div class="bet-detail">
+                            <div class="bet-detail-label">Fair Odds</div>
+                            <div class="bet-detail-value">2.40</div>
+                        </div>
+                        <div class="bet-detail">
+                            <div class="bet-detail-label">Probability</div>
+                            <div class="bet-detail-value">41.7%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>🤖 Advanced ML Technology</h3>
+            <p>This was a historical analysis. Current predictions are available on the J-League 2 page.</p>
+        </div>
+    </div>
+</body>
+</html>

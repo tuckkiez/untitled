@@ -269,7 +269,10 @@
         </div>
 
         <div class="matches-grid" id="matchesContainer">
-            <!-- Matches will be loaded here -->
+            <div style="text-align: center; padding: 40px; color: #a0a0a0;">
+                <div style="font-size: 2rem; margin-bottom: 10px;">⚽</div>
+                <div>Loading J-League 2 matches...</div>
+            </div>
         </div>
 
         <div class="footer">
@@ -298,9 +301,34 @@
         }
 
         function renderMatches() {
+            console.log('renderMatches called');
             const container = document.getElementById('matchesContainer');
             
-            allPredictions.forEach(match => {
+            if (!container) {
+                console.error('Container not found');
+                return;
+            }
+            
+            if (typeof allPredictions === 'undefined') {
+                console.error('allPredictions not defined');
+                container.innerHTML = '<div style="color: red; text-align: center; padding: 20px;">❌ Error: Match data not loaded</div>';
+                return;
+            }
+            
+            if (!allPredictions || allPredictions.length === 0) {
+                console.error('allPredictions is empty');
+                container.innerHTML = '<div style="color: orange; text-align: center; padding: 20px;">⚠️ No matches available</div>';
+                return;
+            }
+            
+            console.log(`Loading ${allPredictions.length} matches`);
+            
+            // Clear container first
+            container.innerHTML = '';
+            
+            allPredictions.forEach((match, index) => {
+                console.log(`Rendering match ${index + 1}: ${match.homeTeam} vs ${match.awayTeam}`);
+                
                 const matchCard = document.createElement('div');
                 matchCard.className = 'match-card';
                 
@@ -359,10 +387,22 @@
                 
                 container.appendChild(matchCard);
             });
+            
+            console.log('All matches rendered successfully');
         }
 
         // Load matches when page loads
-        document.addEventListener('DOMContentLoaded', renderMatches);
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, calling renderMatches');
+            renderMatches();
+        });
+        
+        // Fallback in case DOMContentLoaded already fired
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', renderMatches);
+        } else {
+            renderMatches();
+        }
     </script>
 </body>
 </html>

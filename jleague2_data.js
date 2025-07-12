@@ -1,5 +1,6 @@
 // Complete J-League 2 predictions data for July 12, 2025
-const allPredictions = [
+// Global variable for browser use
+var allPredictions = [
     {
         homeTeam: "Mito Hollyhock",
         awayTeam: "Kataller Toyama",
@@ -162,7 +163,12 @@ const allPredictions = [
     }
 ];
 
-// Export for use in HTML
+// Export for Node.js if needed
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = allPredictions;
+}
+
+// Also make it available globally for browsers
+if (typeof window !== 'undefined') {
+    window.allPredictions = allPredictions;
 }
