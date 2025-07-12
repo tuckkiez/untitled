@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J-League 2 Advanced ML Predictions | July 12, 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            margin-bottom: 20px;
+        }
+
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4ade80;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+        }
+
+        .matches-grid {
+            display: grid;
+            gap: 25px;
+        }
+
+        .match-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .match-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
+        }
+
+        .match-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .teams {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .match-time {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+        }
+
+        .value-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .high-value {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+
+        .good-value {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+        }
+
+        .low-value {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: white;
+        }
+
+        .predictions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .prediction-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .prediction-label {
+            font-size: 0.8rem;
+            color: #a0a0a0;
+            margin-bottom: 5px;
+        }
+
+        .prediction-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .confidence {
+            font-size: 0.9rem;
+            color: #4ade80;
+            font-weight: 500;
+        }
+
+        .probabilities {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .prob-item {
+            text-align: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+        }
+
+        .prob-label {
+            font-size: 0.8rem;
+            color: #a0a0a0;
+            margin-bottom: 5px;
+        }
+
+        .prob-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .match-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .predictions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .probabilities {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 J-League 2 Advanced ML Predictions</h1>
+            <div class="subtitle">July 12, 2025 • Advanced Machine Learning Analysis</div>
+            <div class="subtitle">🤖 Ensemble ML (RF + GB + ET + LR) • 5-Value Predictions</div>
+        </div>
+
+        <div class="stats-summary">
+            <div class="stat-card">
+                <div class="stat-value">58.8%</div>
+                <div class="stat-label">Average Accuracy</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">70.0%</div>
+                <div class="stat-label">Over/Under Accuracy</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">50.0%</div>
+                <div class="stat-label">Match Result Accuracy</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">10</div>
+                <div class="stat-label">Matches Today</div>
+            </div>
+        </div>
+
+        <div class="matches-grid" id="matchesContainer">
+            <!-- Matches will be loaded here -->
+        </div>
+
+        <div class="footer">
+            <h3>🤖 Advanced ML Technology</h3>
+            <p>Powered by Ensemble Machine Learning with 19 advanced features including ELO ratings, team form, goal statistics, and corner analysis.</p>
+            <p>Backtest Results: 58.8% average accuracy across 5 prediction categories</p>
+        </div>
+    </div>
+
+    <script src="jleague2_data.js"></script>
+    <script>
+        function getValueBadgeClass(assessment) {
+            switch(assessment) {
+                case 'high': return 'high-value';
+                case 'good': return 'good-value';
+                default: return 'low-value';
+            }
+        }
+
+        function getValueBadgeText(assessment) {
+            switch(assessment) {
+                case 'high': return '🔥 High Value';
+                case 'good': return '✅ Good Value';
+                default: return '⚠️ Low Value';
+            }
+        }
+
+        function renderMatches() {
+            const container = document.getElementById('matchesContainer');
+            
+            allPredictions.forEach(match => {
+                const matchCard = document.createElement('div');
+                matchCard.className = 'match-card';
+                
+                matchCard.innerHTML = `
+                    <div class="match-header">
+                        <div class="teams">${match.homeTeam} vs ${match.awayTeam}</div>
+                        <div class="match-time">${match.time} • ${match.venue}</div>
+                        <div class="value-badge ${getValueBadgeClass(match.valueAssessment)}">
+                            ${getValueBadgeText(match.valueAssessment)}
+                        </div>
+                    </div>
+                    
+                    <div class="predictions-grid">
+                        <div class="prediction-item">
+                            <div class="prediction-label">1️⃣ Match Result</div>
+                            <div class="prediction-value">${match.predictions.matchResult.value}</div>
+                            <div class="confidence">${match.predictions.matchResult.confidence}%</div>
+                        </div>
+                        <div class="prediction-item">
+                            <div class="prediction-label">2️⃣ Handicap</div>
+                            <div class="prediction-value">${match.predictions.handicap.value}</div>
+                            <div class="confidence">${match.predictions.handicap.confidence}%</div>
+                        </div>
+                        <div class="prediction-item">
+                            <div class="prediction-label">3️⃣ Over/Under</div>
+                            <div class="prediction-value">${match.predictions.overUnder.value}</div>
+                            <div class="confidence">${match.predictions.overUnder.confidence}%</div>
+                        </div>
+                        <div class="prediction-item">
+                            <div class="prediction-label">4️⃣ Corner 1st Half</div>
+                            <div class="prediction-value">${match.predictions.corner1st.value}</div>
+                            <div class="confidence">${match.predictions.corner1st.confidence}%</div>
+                        </div>
+                        <div class="prediction-item">
+                            <div class="prediction-label">5️⃣ Corner 2nd Half</div>
+                            <div class="prediction-value">${match.predictions.corner2nd.value}</div>
+                            <div class="confidence">${match.predictions.corner2nd.confidence}%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="probabilities">
+                        <div class="prob-item">
+                            <div class="prob-label">🏠 ${match.homeTeam.split(' ')[0]}</div>
+                            <div class="prob-value">${match.probabilities.home}%</div>
+                        </div>
+                        <div class="prob-item">
+                            <div class="prob-label">🤝 Draw</div>
+                            <div class="prob-value">${match.probabilities.draw}%</div>
+                        </div>
+                        <div class="prob-item">
+                            <div class="prob-label">✈️ ${match.awayTeam.split(' ')[0]}</div>
+                            <div class="prob-value">${match.probabilities.away}%</div>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(matchCard);
+            });
+        }
+
+        // Load matches when page loads
+        document.addEventListener('DOMContentLoaded', renderMatches);
+    </script>
+</body>
+</html>
