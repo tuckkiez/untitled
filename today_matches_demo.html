@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚽ Today Matches - 13/07/2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .matches-table {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1200px;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 12px 8px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            font-size: 0.85rem;
+        }
+
+        tr:hover {
+            background-color: rgba(102, 126, 234, 0.05);
+        }
+
+        .league-name {
+            font-weight: 600;
+            color: #667eea;
+            white-space: nowrap;
+        }
+
+        .team-name {
+            font-weight: 500;
+            color: #333;
+            max-width: 120px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .odds {
+            font-weight: 600;
+            color: #28a745;
+            font-size: 0.8rem;
+        }
+
+        .time {
+            font-weight: 600;
+            color: #dc3545;
+        }
+
+        .score {
+            font-weight: 700;
+            color: #fd7e14;
+            font-size: 1.1rem;
+        }
+
+        .result-win {
+            background-color: #d4edda;
+            color: #155724;
+            font-weight: 600;
+        }
+
+        .prediction-placeholder {
+            color: #999;
+            font-style: italic;
+            font-size: 0.8rem;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            color: #666;
+        }
+
+        .demo-badge {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .matches-table {
+                margin: 0 -20px;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="demo-badge">🧪 DEMO VERSION</div>
+            <h1>⚽ Today Matches</h1>
+            <div class="subtitle">การแข่งขันฟุตบอลวันนี้ - 13 July 2025</div>
+            <div class="subtitle">🕐 เวลาไทย | 💰 ราคาต่อรอง | 🔮 การทำนาย (เร็วๆ นี้)</div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">แมตช์ทั้งหมด</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">ลีก</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">ยังไม่แข่ง</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">แข่งเสร็จแล้ว</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="matches-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ลีก</th>
+                        <th>เวลา</th>
+                        <th>เจ้าบ้าน</th>
+                        <th>ราคาต่อรอง<br>(H|D|A)</th>
+                        <th>ทีมเยือน</th>
+                        <th>ผลบอล</th>
+                        <th>Prediction<br>Home/Away</th>
+                        <th>Prediction<br>Handicap</th>
+                        <th>Over/Under<br>2.5</th>
+                        <th>Score<br>Prediction</th>
+                        <th>Corner<br>1st Half</th>
+                        <th>Corner<br>Full Match</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="league-name">J-League 2</td>
+                        <td class="time">18:00</td>
+                        <td class="team-name">Mito Hollyhock</td>
+                        <td class="odds">2.8<br>3.2<br>2.4</td>
+                        <td class="team-name">Vegalta Sendai</td>
+                        <td class="score result-win">2-1</td>
+                        <td class="prediction-placeholder">🔮 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🎯 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">⚽ เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">📊 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🚩 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🏁 เร็วๆ นี้</td>
+                    </tr>
+                    <tr>
+                        <td class="league-name">Premier League</td>
+                        <td class="time">19:30</td>
+                        <td class="team-name">Manchester City</td>
+                        <td class="odds">1.45<br>4.2<br>6.5</td>
+                        <td class="team-name">Arsenal</td>
+                        <td class="score ">vs</td>
+                        <td class="prediction-placeholder">🔮 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🎯 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">⚽ เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">📊 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🚩 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🏁 เร็วๆ นี้</td>
+                    </tr>
+                    <tr>
+                        <td class="league-name">Bundesliga</td>
+                        <td class="time">20:30</td>
+                        <td class="team-name">Bayern Munich</td>
+                        <td class="odds">1.35<br>5.0<br>8.0</td>
+                        <td class="team-name">Borussia Dortmund</td>
+                        <td class="score ">vs</td>
+                        <td class="prediction-placeholder">🔮 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🎯 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">⚽ เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">📊 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🚩 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🏁 เร็วๆ นี้</td>
+                    </tr>
+                    <tr>
+                        <td class="league-name">La Liga</td>
+                        <td class="time">21:00</td>
+                        <td class="team-name">Real Madrid</td>
+                        <td class="odds">1.65<br>3.8<br>4.5</td>
+                        <td class="team-name">Barcelona</td>
+                        <td class="score ">vs</td>
+                        <td class="prediction-placeholder">🔮 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🎯 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">⚽ เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">📊 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🚩 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🏁 เร็วๆ นี้</td>
+                    </tr>
+                    <tr>
+                        <td class="league-name">Serie A</td>
+                        <td class="time">22:45</td>
+                        <td class="team-name">Juventus</td>
+                        <td class="odds">2.1<br>3.4<br>3.2</td>
+                        <td class="team-name">Inter Milan</td>
+                        <td class="score ">vs</td>
+                        <td class="prediction-placeholder">🔮 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🎯 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">⚽ เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">📊 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🚩 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🏁 เร็วๆ นี้</td>
+                    </tr>
+                    <tr>
+                        <td class="league-name">Ligue 1</td>
+                        <td class="time">23:00</td>
+                        <td class="team-name">Paris Saint-Germain</td>
+                        <td class="odds">1.25<br>5.5<br>10.0</td>
+                        <td class="team-name">Marseille</td>
+                        <td class="score ">vs</td>
+                        <td class="prediction-placeholder">🔮 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🎯 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">⚽ เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">📊 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🚩 เร็วๆ นี้</td>
+                        <td class="prediction-placeholder">🏁 เร็วๆ นี้</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <p>🤖 <strong>ระบบการทำนายด้วย Advanced ML กำลังคำนวณ...</strong></p>
+            <p>📊 ข้อมูลจาก API-Football | 🧪 นี่คือเวอร์ชันตัวอย่าง</p>
+            <p>⚡ เร็วๆ นี้จะมีการทำนายแบบเรียลไทม์!</p>
+            <p>อัปเดตล่าสุด: 13:37:15</p>
+        </div>
+    </div>
+</body>
+</html>
