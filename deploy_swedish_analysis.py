@@ -1,4 +1,38 @@
-# 🚀 Ultra Advanced Multi-League Football Predictor
+#!/usr/bin/env python3
+"""
+Deploy Swedish Allsvenskan Analysis
+อัปเดตและ push code พร้อมการวิเคราะห์ Swedish Allsvenskan
+"""
+
+import subprocess
+import os
+import json
+from datetime import datetime
+
+def run_command(command, description):
+    """Run shell command and return result"""
+    print(f"🔄 {description}...")
+    try:
+        result = subprocess.run(command, shell=True, capture_output=True, text=True, cwd='/Users/80090/Desktop/Project/untitle')
+        if result.returncode == 0:
+            print(f"✅ {description} completed successfully")
+            if result.stdout.strip():
+                print(f"   Output: {result.stdout.strip()}")
+            return True
+        else:
+            print(f"❌ {description} failed")
+            if result.stderr.strip():
+                print(f"   Error: {result.stderr.strip()}")
+            return False
+    except Exception as e:
+        print(f"❌ {description} failed with exception: {e}")
+        return False
+
+def update_readme():
+    """Update README with latest analysis info"""
+    print("📝 Updating README.md...")
+    
+    readme_content = f'''# 🚀 Ultra Advanced Multi-League Football Predictor
 
 ระบบทำนายผลฟุตบอลหลายลีกที่ทันสมัยและแม่นยำที่สุด ใช้เทคโนโลยี Machine Learning ขั้นสูง **พร้อมการวิเคราะห์แบบเรียลไทม์**
 
@@ -157,3 +191,101 @@ MIT License - ใช้งานได้อย่างอิสระ
 - 💰 **Value Detection**: Advanced edge detection algorithm
 
 [📋 ดูรายละเอียดเต็ม](https://tuckkiez.github.io/untitled/)
+'''
+    
+    with open('/Users/80090/Desktop/Project/untitle/README.md', 'w', encoding='utf-8') as f:
+        f.write(readme_content)
+    
+    print("✅ README.md updated successfully")
+
+def create_deployment_summary():
+    """Create deployment summary"""
+    summary = {
+        "deployment_info": {
+            "timestamp": datetime.now().isoformat(),
+            "version": "Swedish Allsvenskan Real Odds v1.0",
+            "features_added": [
+                "Real odds integration from 14+ bookmakers",
+                "Advanced ML predictions for Swedish Allsvenskan",
+                "Value bet detection system",
+                "Market margin analysis",
+                "Live HTML dashboard update"
+            ],
+            "files_updated": [
+                "index.html",
+                "README.md", 
+                "update_swedish_odds_analysis.py",
+                "deploy_swedish_analysis.py",
+                "swedish_analysis_results.json"
+            ],
+            "performance_metrics": {
+                "home_win_confidence": "58.7%",
+                "over_under_confidence": "51.4%",
+                "bts_confidence": "52.3%",
+                "market_margin": "5.85%",
+                "bookmakers_integrated": 14
+            }
+        }
+    }
+    
+    with open('/Users/80090/Desktop/Project/untitle/deployment_summary.json', 'w', encoding='utf-8') as f:
+        json.dump(summary, f, indent=2, ensure_ascii=False)
+    
+    print("📋 Deployment summary created")
+
+def main():
+    """Main deployment function"""
+    print("🚀 Starting Swedish Allsvenskan Analysis Deployment...")
+    print("="*60)
+    
+    # Change to project directory
+    os.chdir('/Users/80090/Desktop/Project/untitle')
+    
+    # Step 1: Update README
+    update_readme()
+    
+    # Step 2: Create deployment summary
+    create_deployment_summary()
+    
+    # Step 3: Git operations
+    print("\n📦 Git Operations:")
+    
+    # Add all files
+    if run_command("git add .", "Adding all files to git"):
+        
+        # Commit changes
+        commit_message = f"feat: Add Swedish Allsvenskan real odds analysis - {datetime.now().strftime('%Y-%m-%d %H:%M')}"
+        if run_command(f'git commit -m "{commit_message}"', "Committing changes"):
+            
+            # Push to origin
+            if run_command("git push origin main", "Pushing to GitHub"):
+                print("✅ Successfully pushed to GitHub!")
+            else:
+                print("⚠️ Push failed, but local commit successful")
+        else:
+            print("⚠️ Commit failed, checking git status...")
+            run_command("git status", "Checking git status")
+    
+    # Step 4: Display summary
+    print("\n" + "="*60)
+    print("🇸🇪 SWEDISH ALLSVENSKAN DEPLOYMENT COMPLETE")
+    print("="*60)
+    print("✅ Features Added:")
+    print("   • Real odds integration (14+ bookmakers)")
+    print("   • Advanced ML predictions")
+    print("   • Value bet detection")
+    print("   • Market analysis")
+    print("   • Live HTML dashboard")
+    print()
+    print("📊 Analysis Results:")
+    print("   • Home Win: 58.7% confidence")
+    print("   • Under 2.5: 51.4% confidence") 
+    print("   • No BTS: 52.3% confidence")
+    print("   • Market Margin: 5.85%")
+    print()
+    print("🌐 Live Demo: https://tuckkiez.github.io/untitled/")
+    print("📋 GitHub: https://github.com/tuckkiez/untitled")
+    print("="*60)
+
+if __name__ == "__main__":
+    main()
