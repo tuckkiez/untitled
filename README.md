@@ -2,7 +2,21 @@
 
 ระบบทำนายผลฟุตบอลหลายลีกที่ทันสมัยและแม่นยำที่สุด ใช้เทคโนโลยี Machine Learning ขั้นสูง **พร้อมการวิเคราะห์แบบเรียลไทม์**
 
-## 🆕 NEW: Swedish Allsvenskan Real Odds Analysis (July 13, 2025)
+## 🆕 NEW: UEFA Champions League Analysis (July 16, 2025)
+
+### 🏆 UEFA Champions League Features
+- **Live Qualifying Matches** - 2 matches in 1st Qualifying Round
+- **Real-time Analysis** - Professional match predictions and insights
+- **Thai Time Display** - Converted to local timezone (01:45 kickoff)
+- **Expert Predictions** - Based on team form and historical data
+
+### ⚡ Latest Champions League Results
+- **Match 1:** Dinamo Minsk vs Ludogorets (01:45 Thai Time)
+- **Match 2:** Linfield vs Shelbourne (01:45 Thai Time)
+- **Prediction Confidence:** 55% Ludogorets, 52% Linfield
+- **Goals Analysis:** Over 2.5 vs Under 2.5 goals respectively
+
+## 🇸🇪 Swedish Allsvenskan Real Odds Analysis (July 13, 2025)
 
 ### 🇸🇪 Swedish Allsvenskan Features
 - **Real-time Odds Integration** - ข้อมูล odds จริงจาก 14+ bookmakers
