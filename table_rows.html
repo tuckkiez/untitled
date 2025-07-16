@@ -1,221 +1,3 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏆 Emperor Cup Real Data Analysis - July 16, 2025</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        
-        .header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            font-weight: 700;
-        }
-        
-        .header p {
-            margin: 10px 0 0 0;
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-        
-        .stats-bar {
-            background: #f8f9fa;
-            padding: 20px;
-            display: flex;
-            justify-content: space-around;
-            border-bottom: 1px solid #e9ecef;
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2em;
-            font-weight: bold;
-            color: #ee5a24;
-        }
-        
-        .stat-label {
-            color: #666;
-            font-size: 0.9em;
-        }
-        
-        .table-container {
-            padding: 20px;
-            overflow-x: auto;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-        }
-        
-        th {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 15px 8px;
-            text-align: center;
-            font-weight: 600;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-        
-        td {
-            padding: 12px 8px;
-            text-align: center;
-            border-bottom: 1px solid #e9ecef;
-        }
-        
-        tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-        
-        tr:hover {
-            background-color: #e3f2fd;
-            transform: scale(1.01);
-            transition: all 0.2s ease;
-        }
-        
-        .team-name {
-            font-weight: 600;
-            color: #2c3e50;
-        }
-        
-        .home-team {
-            color: #27ae60;
-        }
-        
-        .away-team {
-            color: #e74c3c;
-        }
-        
-        .prob-high {
-            background: #d4edda;
-            color: #155724;
-            font-weight: bold;
-            border-radius: 4px;
-            padding: 2px 4px;
-        }
-        
-        .prob-medium {
-            background: #fff3cd;
-            color: #856404;
-            font-weight: bold;
-            border-radius: 4px;
-            padding: 2px 4px;
-        }
-        
-        .prob-low {
-            background: #f8d7da;
-            color: #721c24;
-            font-weight: bold;
-            border-radius: 4px;
-            padding: 2px 4px;
-        }
-        
-        .time {
-            font-weight: bold;
-            color: #6c757d;
-        }
-        
-        .venue {
-            font-style: italic;
-            color: #6c757d;
-            font-size: 0.9em;
-        }
-        
-        .footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        @media (max-width: 768px) {
-            .stats-bar {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            table {
-                font-size: 12px;
-            }
-            
-            th, td {
-                padding: 8px 4px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>🏆 Emperor Cup Real Data Analysis</h1>
-            <p>July 16, 2025 - 3rd Round Predictions with SofaScore API</p>
-        </div>
-        
-        <div class="stats-bar">
-            <div class="stat-item">
-                <div class="stat-number">15</div>
-                <div class="stat-label">Real Matches</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">77.7%</div>
-                <div class="stat-label">Avg Corner O/U</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">SofaScore</div>
-                <div class="stat-label">Real API Data</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">✅</div>
-                <div class="stat-label">Live Analysis</div>
-            </div>
-        </div>
-        
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>เวลา</th>
-                        <th>ทีมเหย้า</th>
-                        <th>ทีมเยือน</th>
-                        <th>สนาม</th>
-                        <th>ประตูเฉลี่ย<br>เหย้า/เยือน</th>
-                        <th>มุมเฉลี่ย<br>เหย้า/เยือน</th>
-                        <th>อัตราชนะ<br>เหย้า/เยือน</th>
-                        <th>Over/Under<br>2.5</th>
-                        <th>มุม O/U<br>9.5</th>
-                        <th>ผลการแข่งขัน<br>เหย้า/เสมอ/เยือน</th>
-                    </tr>
-                </thead>
-                <tbody>
                     <tr>
                         <td class="time">10:30</td>
                         <td class="team-name home-team">Cerezo Osaka</td>
@@ -229,7 +11,7 @@
                         <td><span class="prob-low">26%</span> / 24% / <span class="prob-medium">50%</span></td>
                     </tr>
                     <tr>
-                        <td class="time">09:30</td>
+                        <td class="time">9:30:</td>
                         <td class="team-name home-team">Kawasaki Frontale</td>
                         <td class="team-name away-team">Sagamihara</td>
                         <td class="venue">Todoroki Stadium</td>
@@ -238,7 +20,7 @@
                         <td>60% / 40%</td>
                         <td><span class="prob-medium">69% / 31%</span></td>
                         <td><span class="prob-high">80% / 20%</span></td>
-                        <td><span class="prob-medium">52%</span> / 18% / 30%</td>
+                        <td><span class="prob-medium">52%</span> / 18% / <span class="">30%</span></td>
                     </tr>
                     <tr>
                         <td class="time">10:00</td>
@@ -250,10 +32,10 @@
                         <td>40% / 40%</td>
                         <td><span class="prob-medium">69% / 31%</span></td>
                         <td><span class="prob-high">80% / 20%</span></td>
-                        <td>44% / 22% / 34%</td>
+                        <td><span class="prob-low">44%</span> / 22% / <span class="">34%</span></td>
                     </tr>
                     <tr>
-                        <td class="time">09:00</td>
+                        <td class="time">9:00:</td>
                         <td class="team-name home-team">Nagoya Grampus</td>
                         <td class="team-name away-team">Roasso Kumamoto</td>
                         <td class="venue">Toyota Stadium</td>
@@ -262,7 +44,7 @@
                         <td>40% / 40%</td>
                         <td><span class="prob-high">75% / 25%</span></td>
                         <td><span class="prob-high">80% / 20%</span></td>
-                        <td>43% / 22% / 35%</td>
+                        <td><span class="prob-low">43%</span> / 22% / <span class="">35%</span></td>
                     </tr>
                     <tr>
                         <td class="time">10:00</td>
@@ -274,10 +56,10 @@
                         <td>40% / 80%</td>
                         <td><span class="prob-high">73% / 27%</span></td>
                         <td><span class="prob-high">80% / 20%</span></td>
-                        <td>33% / 17% / <span class="prob-medium">50%</span></td>
+                        <td><span class="prob-low">33%</span> / 17% / <span class="prob-medium">50%</span></td>
                     </tr>
                     <tr>
-                        <td class="time">09:00</td>
+                        <td class="time">9:00:</td>
                         <td class="team-name home-team">Tokyo Verdy</td>
                         <td class="team-name away-team">Sagan Tosu</td>
                         <td class="venue">Ajinomoto Stadium</td>
@@ -286,7 +68,7 @@
                         <td>20% / 60%</td>
                         <td><span class="prob-medium">65% / 35%</span></td>
                         <td><span class="prob-high">76% / 24%</span></td>
-                        <td>16% / 24% / <span class="prob-medium">60%</span></td>
+                        <td><span class="prob-low">16%</span> / 24% / <span class="prob-medium">60%</span></td>
                     </tr>
                     <tr>
                         <td class="time">10:00</td>
@@ -298,10 +80,10 @@
                         <td>40% / 60%</td>
                         <td><span class="prob-high">75% / 25%</span></td>
                         <td><span class="prob-high">80% / 20%</span></td>
-                        <td>38% / 18% / 44%</td>
+                        <td><span class="prob-low">38%</span> / 18% / <span class="prob-low">44%</span></td>
                     </tr>
                     <tr>
-                        <td class="time">09:00</td>
+                        <td class="time">9:00:</td>
                         <td class="team-name home-team">FC Tokyo</td>
                         <td class="team-name away-team">Oita Trinita</td>
                         <td class="venue">Ajinomoto Stadium</td>
@@ -310,7 +92,7 @@
                         <td>40% / 80%</td>
                         <td><span class="prob-medium">68% / 32%</span></td>
                         <td><span class="prob-high">73% / 27%</span></td>
-                        <td>29% / 18% / <span class="prob-medium">53%</span></td>
+                        <td><span class="prob-low">29%</span> / 18% / <span class="prob-medium">53%</span></td>
                     </tr>
                     <tr>
                         <td class="time">10:00</td>
@@ -322,10 +104,10 @@
                         <td>40% / 40%</td>
                         <td><span class="prob-medium">65% / 35%</span></td>
                         <td><span class="prob-high">78% / 22%</span></td>
-                        <td>43% / 23% / 34%</td>
+                        <td><span class="prob-low">43%</span> / 23% / <span class="">34%</span></td>
                     </tr>
                     <tr>
-                        <td class="time">09:00</td>
+                        <td class="time">9:00:</td>
                         <td class="team-name home-team">Kashima Antlers</td>
                         <td class="team-name away-team">V-varen Nagasaki</td>
                         <td class="venue">Kashima Stadium</td>
@@ -334,7 +116,7 @@
                         <td>60% / 60%</td>
                         <td><span class="prob-high">75% / 25%</span></td>
                         <td><span class="prob-high">80% / 20%</span></td>
-                        <td>44% / 16% / 40%</td>
+                        <td><span class="prob-low">44%</span> / 16% / <span class="">40%</span></td>
                     </tr>
                     <tr>
                         <td class="time">10:00</td>
@@ -346,10 +128,10 @@
                         <td>20% / 20%</td>
                         <td><span class="prob-medium">65% / 35%</span></td>
                         <td><span class="prob-high">79% / 21%</span></td>
-                        <td>29% / 39% / 32%</td>
+                        <td><span class="prob-low">29%</span> / 39% / <span class="prob-low">32%</span></td>
                     </tr>
                     <tr>
-                        <td class="time">09:00</td>
+                        <td class="time">9:00:</td>
                         <td class="team-name home-team">Shonan Bellmare</td>
                         <td class="team-name away-team">Shimizu S-Pulse</td>
                         <td class="venue">Shonan BMW Stadium</td>
@@ -358,7 +140,7 @@
                         <td>60% / 100%</td>
                         <td><span class="prob-medium">65% / 35%</span></td>
                         <td><span class="prob-high">74% / 26%</span></td>
-                        <td>37% / 14% / 49%</td>
+                        <td><span class="prob-low">37%</span> / 14% / <span class="prob-low">49%</span></td>
                     </tr>
                     <tr>
                         <td class="time">10:00</td>
@@ -370,10 +152,10 @@
                         <td>80% / 0%</td>
                         <td><span class="prob-medium">65% / 35%</span></td>
                         <td><span class="prob-high">78% / 22%</span></td>
-                        <td><span class="prob-high">70%</span> / 15% / 15%</td>
+                        <td><span class="prob-high">70%</span> / 15% / <span class="">15%</span></td>
                     </tr>
                     <tr>
-                        <td class="time">09:00</td>
+                        <td class="time">9:00:</td>
                         <td class="team-name home-team">Kyoto Sanga</td>
                         <td class="team-name away-team">Yokohama FC</td>
                         <td class="venue">Sanga Stadium</td>
@@ -382,7 +164,7 @@
                         <td>20% / 20%</td>
                         <td><span class="prob-low">44% / 56%</span></td>
                         <td><span class="prob-high">70% / 30%</span></td>
-                        <td>38% / 46% / 16%</td>
+                        <td><span class="prob-low">38%</span> / 46% / <span class="">16%</span></td>
                     </tr>
                     <tr>
                         <td class="time">10:00</td>
@@ -394,16 +176,5 @@
                         <td>40% / 40%</td>
                         <td><span class="prob-medium">67% / 33%</span></td>
                         <td><span class="prob-high">80% / 20%</span></td>
-                        <td>44% / 22% / 34%</td>
+                        <td><span class="prob-low">44%</span> / 22% / <span class="">34%</span></td>
                     </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="footer">
-            <p>🚀 Ultra Advanced Multi-League Football Predictor | Emperor Cup Real Data Analysis</p>
-            <p>Generated: July 16, 2025 | Data Source: SofaScore API | File: fixed_emperor_cup_analysis_20250716_124315.csv</p>
-        </div>
-    </div>
-</body>
-</html>
