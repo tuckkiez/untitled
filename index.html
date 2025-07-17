@@ -10,7 +10,7 @@
         :root {
             --primary-color: #ffffff;
             --secondary-color: #f8f9fa;
-            --accent-color: #6c5ce7;
+            --accent-color: #242233;
             --text-color: #333333;
             --text-muted: #6c757d;
             --success-color: #00b894;
@@ -26,7 +26,8 @@
             margin: 0;
             background-color: var(--primary-color);
             color: var(--text-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: monospace;
+            /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
         }
         
         .container {
@@ -35,7 +36,7 @@
         }
         
         .header {
-            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            background: linear-gradient(135deg, #1e1a3d 0%, #333e60 100%);
             color: white;
             padding: 30px;
             margin-bottom: 30px;
@@ -95,7 +96,7 @@
         .high-confidence-section h2 i {
             margin-right: 10px;
             font-size: 1.5em;
-            color: #e84393;
+            color: #e30000;
         }
         
         .table {
@@ -174,7 +175,7 @@
         
         /* ปรับแต่งตาราง */
         .table thead th {
-            background-color: #495057;
+            background-color: #363636;
             color: white;
             border-color: #495057;
         }
@@ -186,7 +187,7 @@
         
         /* ปรับแต่งแถวที่มีความเชื่อมั่นสูง */
         .high-confidence-row {
-            background-color: rgba(0, 184, 148, 0.1) !important;
+            background-color: rgb(18 251 52 / 10%) !important;
             font-weight: 500;
         }
     </style>
@@ -206,8 +207,8 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
+                        <th>Time</th>
                         <th>Match</th>
-                        <th>Time (Thai)</th>
                         <th>Prediction Type</th>
                         <th>Prediction</th>
                         <th>Confidence</th>
@@ -216,131 +217,131 @@
                 <tbody>
     
         <tr class="high-confidence-row">
+            <td>23:00</td>
             <td>HJK helsinki vs NSI Runavik</td>
-            <td>23:00</td>
             <td>Corners</td>
             <td>Under 9.5</td>
             <td class="text-success fw-bold">95.0%</td>
         </tr>
         
         <tr class="high-confidence-row">
+            <td>23:00</td>
             <td>Flora Tallinn vs Valur Reykjavik</td>
-            <td>23:00</td>
             <td>Corners</td>
             <td>Under 9.5</td>
             <td class="text-success fw-bold">95.0%</td>
         </tr>
         
         <tr class="high-confidence-row">
-            <td>Vikingur Reykjavik vs Malisheva</td>
             <td>01:45</td>
+            <td>Vikingur Reykjavik vs Malisheva</td>
             <td>Corners</td>
             <td>Under 9.5</td>
             <td class="text-success fw-bold">94.0%</td>
         </tr>
         
         <tr class="high-confidence-row">
-            <td>CFR 1907 Cluj vs Paks</td>
             <td>00:30</td>
+            <td>CFR 1907 Cluj vs Paks</td>
             <td>Corners</td>
             <td>Under 9.5</td>
             <td class="text-success fw-bold">93.5%</td>
         </tr>
         
         <tr class="high-confidence-row">
-            <td>Sileks vs Dečić</td>
             <td>00:00</td>
+            <td>Sileks vs Dečić</td>
             <td>Corners</td>
             <td>Under 9.5</td>
             <td class="text-success fw-bold">90.5%</td>
         </tr>
         
         <tr class="high-confidence-row">
-            <td>F91 Dudelange vs Atlètic Club d'Escaldes</td>
             <td>00:00</td>
+            <td>F91 Dudelange vs Atlètic Club d'Escaldes</td>
             <td>Corners</td>
             <td>Under 9.5</td>
-            <td class="text-success">87.6%</td>
+            <td class="text-success fw-bold">87.6%</td>
         </tr>
         
         <tr class="high-confidence-row">
-            <td>Koper vs Zeljeznicar Sarajevo</td>
             <td>00:30</td>
+            <td>Koper vs Zeljeznicar Sarajevo</td>
             <td>Corners</td>
             <td>Under 9.5</td>
-            <td class="text-success">86.0%</td>
+            <td class="text-success fw-bold">86.0%</td>
         </tr>
         
         <tr class="high-confidence-row">
-            <td>Prishtina vs Sheriff Tiraspol</td>
             <td>01:00</td>
+            <td>Prishtina vs Sheriff Tiraspol</td>
             <td>Exact Score</td>
             <td>0-2</td>
-            <td class="text-success">85%</td>
+            <td class="text-success fw-bold">85%</td>
         </tr>
         
         <tr class="high-confidence-row">
-            <td>FK Rabotnicki vs Torpedo Zhodino</td>
             <td>23:00</td>
+            <td>FK Rabotnicki vs Torpedo Zhodino</td>
             <td>Exact Score</td>
             <td>0-2</td>
-            <td class="text-success">85%</td>
+            <td class="text-success fw-bold">85%</td>
         </tr>
         
         <tr class="high-confidence-row">
-            <td>Vikingur Reykjavik vs Malisheva</td>
             <td>01:45</td>
+            <td>Vikingur Reykjavik vs Malisheva</td>
             <td>Exact Score</td>
             <td>2-0</td>
-            <td class="text-success">85%</td>
+            <td class="text-success fw-bold">85%</td>
         </tr>
         
         <tr class="high-confidence-row">
-            <td>Neman vs FC Urartu</td>
             <td>01:00</td>
+            <td>Neman vs FC Urartu</td>
             <td>Exact Score</td>
             <td>1-0</td>
-            <td class="text-success">84.0%</td>
+            <td class="text-success fw-bold">84.0%</td>
         </tr>
         
         <tr class="high-confidence-row">
-            <td>Aktobe vs Legia Warszawa</td>
             <td>23:00</td>
+            <td>Aktobe vs Legia Warszawa</td>
             <td>Corners</td>
             <td>Over 9.5</td>
-            <td class="text-success">83.5%</td>
+            <td class="text-success fw-bold">83.5%</td>
         </tr>
         
         <tr class="high-confidence-row">
-            <td>Ordabasy vs Torpedo Kutaisi</td>
             <td>23:00</td>
+            <td>Ordabasy vs Torpedo Kutaisi</td>
             <td>Exact Score</td>
             <td>0-1</td>
-            <td class="text-success">82.5%</td>
+            <td class="text-success fw-bold">82.5%</td>
         </tr>
         
         <tr class="high-confidence-row">
-            <td>La Fiorita vs Vardar Skopje</td>
             <td>02:00</td>
+            <td>La Fiorita vs Vardar Skopje</td>
             <td>Corners</td>
             <td>Under 9.5</td>
-            <td class="text-success">82.5%</td>
+            <td class="text-success fw-bold">82.5%</td>
         </tr>
         
         <tr class="high-confidence-row">
-            <td>Aktobe vs Legia Warszawa</td>
             <td>23:00</td>
+            <td>Aktobe vs Legia Warszawa</td>
             <td>Exact Score</td>
             <td>0-1</td>
-            <td class="text-success">82.3%</td>
+            <td class="text-success fw-bold">82.3%</td>
         </tr>
         
         <tr class="high-confidence-row">
-            <td>Aktobe vs Legia Warszawa</td>
             <td>23:00</td>
+            <td>Aktobe vs Legia Warszawa</td>
             <td>Match Result</td>
             <td>Away Win</td>
-            <td class="text-success">80.4%</td>
+            <td class="text-success fw-bold">80.4%</td>
         </tr>
         
                 </tbody>
@@ -358,8 +359,8 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
+                        <th>Time</th>
                         <th>Match</th>
-                        <th>Time (Thai)</th>
                         <th>Match Result</th>
                         <th>Over/Under 2.5</th>
                         <th>Both Teams Score</th>
@@ -370,18 +371,18 @@
                 <tbody>
     
         <tr class="high-confidence-row">
-            <td>Aktobe vs Legia Warszawa</td>
             <td>23:00</td>
-            <td class="text-success">Away Win (80.4%)</td>
+            <td>Aktobe vs Legia Warszawa</td>
+            <td class="text-success fw-bold">Away Win (80.4%)</td>
             <td class="text-primary">Under (79.0%)</td>
             <td class="text-primary">No (79.0%)</td>
-            <td class="text-success">Over 9.5 (83.5%)</td>
-            <td class="text-success">0-1 (82.3%)</td>
+            <td class="text-success fw-bold">Over 9.5 (83.5%)</td>
+            <td class="text-success fw-bold">0-1 (82.3%)</td>
         </tr>
         
         <tr class="">
-            <td>Ilves vs Shakhtar Donetsk</td>
             <td>23:00</td>
+            <td>Ilves vs Shakhtar Donetsk</td>
             <td class="">Away Win (63.7%)</td>
             <td class="">Over (61.8%)</td>
             <td class="">No (61.8%)</td>
@@ -390,8 +391,8 @@
         </tr>
         
         <tr class="">
-            <td>BK Hacken vs Spartak Trnava</td>
             <td>00:00</td>
+            <td>BK Hacken vs Spartak Trnava</td>
             <td class="">Home Win (57.2%)</td>
             <td class="">Under (61.8%)</td>
             <td class="">No (61.8%)</td>
@@ -400,8 +401,8 @@
         </tr>
         
         <tr class="high-confidence-row">
-            <td>CFR 1907 Cluj vs Paks</td>
             <td>00:30</td>
+            <td>CFR 1907 Cluj vs Paks</td>
             <td class="text-muted">Home Win (38.2%)</td>
             <td class="">Under (61.8%)</td>
             <td class="">No (61.8%)</td>
@@ -410,18 +411,18 @@
         </tr>
         
         <tr class="high-confidence-row">
-            <td>Prishtina vs Sheriff Tiraspol</td>
             <td>01:00</td>
+            <td>Prishtina vs Sheriff Tiraspol</td>
             <td class="text-primary">Away Win (75.9%)</td>
             <td class="">Under (61.8%)</td>
             <td class="">No (61.8%)</td>
             <td class="text-primary">Under 9.5 (75.0%)</td>
-            <td class="text-success">0-2 (85%)</td>
+            <td class="text-success fw-bold">0-2 (85%)</td>
         </tr>
         
         <tr class="">
-            <td>Hapoel Beer Sheva vs Levski Sofia</td>
             <td>01:00</td>
+            <td>Hapoel Beer Sheva vs Levski Sofia</td>
             <td class="text-muted">Away Win (40.3%)</td>
             <td class="">Under (59.7%)</td>
             <td class="">No (59.7%)</td>
@@ -430,8 +431,8 @@
         </tr>
         
         <tr class="">
-            <td>Celje vs Sabah FA</td>
             <td>01:00</td>
+            <td>Celje vs Sabah FA</td>
             <td class="">Home Win (61.8%)</td>
             <td class="">Over (61.8%)</td>
             <td class="">Yes (61.8%)</td>
@@ -440,8 +441,8 @@
         </tr>
         
         <tr class="">
-            <td>FK Partizan vs AEK Larnaca</td>
             <td>02:00</td>
+            <td>FK Partizan vs AEK Larnaca</td>
             <td class="">Away Win (57.2%)</td>
             <td class="">Over (59.7%)</td>
             <td class="">Yes (59.7%)</td>
@@ -464,8 +465,8 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
+                        <th>Time</th>
                         <th>Match</th>
-                        <th>Time (Thai)</th>
                         <th>Match Result</th>
                         <th>Over/Under 2.5</th>
                         <th>Both Teams Score</th>
@@ -476,8 +477,8 @@
                 <tbody>
     
         <tr class="">
-            <td>BFC Daugavpils vs Vllaznia Shkodër</td>
             <td>22:00</td>
+            <td>BFC Daugavpils vs Vllaznia Shkodër</td>
             <td class="text-muted">Home Win (54.1%)</td>
             <td class="">Under (61.8%)</td>
             <td class="">No (61.8%)</td>
@@ -486,18 +487,18 @@
         </tr>
         
         <tr class="high-confidence-row">
-            <td>FK Rabotnicki vs Torpedo Zhodino</td>
             <td>23:00</td>
+            <td>FK Rabotnicki vs Torpedo Zhodino</td>
             <td class="text-primary">Away Win (77.0%)</td>
             <td class="">Over (61.8%)</td>
             <td class="">No (61.8%)</td>
             <td class="">Under 9.5 (55.4%)</td>
-            <td class="text-success">0-2 (85%)</td>
+            <td class="text-success fw-bold">0-2 (85%)</td>
         </tr>
         
         <tr class="">
-            <td>Dila vs Racing FC Union Luxembourg</td>
             <td>23:00</td>
+            <td>Dila vs Racing FC Union Luxembourg</td>
             <td class="text-primary">Home Win (66.3%)</td>
             <td class="">Over (61.8%)</td>
             <td class="">Yes (61.8%)</td>
@@ -506,8 +507,8 @@
         </tr>
         
         <tr class="">
-            <td>Hegelmann Litauen vs St Patrick's Athl.</td>
             <td>23:00</td>
+            <td>Hegelmann Litauen vs St Patrick's Athl.</td>
             <td class="text-muted">Home Win (45.9%)</td>
             <td class="">Under (61.8%)</td>
             <td class="">No (61.8%)</td>
@@ -516,8 +517,8 @@
         </tr>
         
         <tr class="">
-            <td>Pyunik Yerevan vs Tre Fiori</td>
             <td>23:00</td>
+            <td>Pyunik Yerevan vs Tre Fiori</td>
             <td class="">Away Win (61.8%)</td>
             <td class="">Under (61.8%)</td>
             <td class="">No (61.8%)</td>
@@ -526,8 +527,8 @@
         </tr>
         
         <tr class="">
-            <td>FC Santa Coloma vs Borac Banja Luka</td>
             <td>23:00</td>
+            <td>FC Santa Coloma vs Borac Banja Luka</td>
             <td class="">Home Win (63.1%)</td>
             <td class="">Over (61.8%)</td>
             <td class="">Yes (61.8%)</td>
@@ -536,8 +537,8 @@
         </tr>
         
         <tr class="high-confidence-row">
-            <td>HJK helsinki vs NSI Runavik</td>
             <td>23:00</td>
+            <td>HJK helsinki vs NSI Runavik</td>
             <td class="">Away Win (57.9%)</td>
             <td class="">Over (61.8%)</td>
             <td class="">No (61.8%)</td>
@@ -546,18 +547,18 @@
         </tr>
         
         <tr class="high-confidence-row">
-            <td>Ordabasy vs Torpedo Kutaisi</td>
             <td>23:00</td>
+            <td>Ordabasy vs Torpedo Kutaisi</td>
             <td class="">Away Win (57.4%)</td>
             <td class="">Under (61.8%)</td>
             <td class="">Yes (61.8%)</td>
             <td class="text-primary">Over 9.5 (75.5%)</td>
-            <td class="text-success">0-1 (82.5%)</td>
+            <td class="text-success fw-bold">0-1 (82.5%)</td>
         </tr>
         
         <tr class="high-confidence-row">
-            <td>Flora Tallinn vs Valur Reykjavik</td>
             <td>23:00</td>
+            <td>Flora Tallinn vs Valur Reykjavik</td>
             <td class="text-muted">Away Win (54.6%)</td>
             <td class="">Over (61.8%)</td>
             <td class="">No (61.8%)</td>
@@ -566,8 +567,8 @@
         </tr>
         
         <tr class="">
-            <td>Paide vs Magpies</td>
             <td>23:30</td>
+            <td>Paide vs Magpies</td>
             <td class="">Home Win (64.9%)</td>
             <td class="">Over (61.8%)</td>
             <td class="">Yes (61.8%)</td>
@@ -576,8 +577,8 @@
         </tr>
         
         <tr class="">
-            <td>Haverfordwest County AFC vs Floriana</td>
             <td>00:00</td>
+            <td>Haverfordwest County AFC vs Floriana</td>
             <td class="">Away Win (57.2%)</td>
             <td class="">Over (61.8%)</td>
             <td class="">Yes (61.8%)</td>
@@ -586,8 +587,8 @@
         </tr>
         
         <tr class="high-confidence-row">
-            <td>Sileks vs Dečić</td>
             <td>00:00</td>
+            <td>Sileks vs Dečić</td>
             <td class="text-muted">Away Win (54.1%)</td>
             <td class="">Under (61.8%)</td>
             <td class="">No (61.8%)</td>
@@ -596,8 +597,8 @@
         </tr>
         
         <tr class="">
-            <td>Petrocub vs Birkirkara</td>
             <td>00:00</td>
+            <td>Petrocub vs Birkirkara</td>
             <td class="text-muted">Away Win (54.1%)</td>
             <td class="">Under (61.8%)</td>
             <td class="">No (61.8%)</td>
@@ -606,8 +607,8 @@
         </tr>
         
         <tr class="">
-            <td>Penybont vs Kauno Žalgiris</td>
             <td>00:00</td>
+            <td>Penybont vs Kauno Žalgiris</td>
             <td class="text-primary">Away Win (71.7%)</td>
             <td class="">Over (61.8%)</td>
             <td class="">No (61.8%)</td>
@@ -616,38 +617,38 @@
         </tr>
         
         <tr class="high-confidence-row">
-            <td>F91 Dudelange vs Atlètic Club d'Escaldes</td>
             <td>00:00</td>
+            <td>F91 Dudelange vs Atlètic Club d'Escaldes</td>
             <td class="">Home Win (55.0%)</td>
             <td class="text-primary">Under (79.0%)</td>
             <td class="text-primary">No (79.0%)</td>
-            <td class="text-success">Under 9.5 (87.6%)</td>
+            <td class="text-success fw-bold">Under 9.5 (87.6%)</td>
             <td class="text-muted">0-1 (32.3%)</td>
         </tr>
         
         <tr class="high-confidence-row">
-            <td>Koper vs Zeljeznicar Sarajevo</td>
             <td>00:30</td>
+            <td>Koper vs Zeljeznicar Sarajevo</td>
             <td class="text-muted">Away Win (42.5%)</td>
             <td class="">Under (61.8%)</td>
             <td class="">Yes (61.8%)</td>
-            <td class="text-success">Under 9.5 (86.0%)</td>
+            <td class="text-success fw-bold">Under 9.5 (86.0%)</td>
             <td class="text-muted">1-2 (30.4%)</td>
         </tr>
         
         <tr class="high-confidence-row">
-            <td>Neman vs FC Urartu</td>
             <td>01:00</td>
+            <td>Neman vs FC Urartu</td>
             <td class="text-primary">Home Win (73.6%)</td>
             <td class="">Over (61.8%)</td>
             <td class="">Yes (61.8%)</td>
             <td class="text-primary">Under 9.5 (68.0%)</td>
-            <td class="text-success">1-0 (84.0%)</td>
+            <td class="text-success fw-bold">1-0 (84.0%)</td>
         </tr>
         
         <tr class="">
-            <td>Partizani vs Kalju Nomme</td>
             <td>01:00</td>
+            <td>Partizani vs Kalju Nomme</td>
             <td class="text-muted">Home Win (38.2%)</td>
             <td class="">Under (61.8%)</td>
             <td class="">Yes (61.8%)</td>
@@ -656,8 +657,8 @@
         </tr>
         
         <tr class="">
-            <td>Dinamo Brest vs Sutjeska</td>
             <td>01:30</td>
+            <td>Dinamo Brest vs Sutjeska</td>
             <td class="text-primary">Home Win (72.0%)</td>
             <td class="">Over (61.8%)</td>
             <td class="">Yes (61.8%)</td>
@@ -666,8 +667,8 @@
         </tr>
         
         <tr class="">
-            <td>Cliftonville FC vs St Joseph S Fc</td>
             <td>01:45</td>
+            <td>Cliftonville FC vs St Joseph S Fc</td>
             <td class="text-muted">Away Win (45.7%)</td>
             <td class="">Over (61.8%)</td>
             <td class="">Yes (61.8%)</td>
@@ -676,18 +677,18 @@
         </tr>
         
         <tr class="high-confidence-row">
-            <td>Vikingur Reykjavik vs Malisheva</td>
             <td>01:45</td>
+            <td>Vikingur Reykjavik vs Malisheva</td>
             <td class="text-primary">Home Win (77.0%)</td>
             <td class="">Under (61.8%)</td>
             <td class="">No (61.8%)</td>
             <td class="text-success fw-bold">Under 9.5 (94.0%)</td>
-            <td class="text-success">2-0 (85%)</td>
+            <td class="text-success fw-bold">2-0 (85%)</td>
         </tr>
         
         <tr class="">
-            <td>KI Klaksvik vs SJK</td>
             <td>01:45</td>
+            <td>KI Klaksvik vs SJK</td>
             <td class="text-primary">Home Win (71.9%)</td>
             <td class="">Over (61.8%)</td>
             <td class="">Yes (61.8%)</td>
@@ -696,12 +697,12 @@
         </tr>
         
         <tr class="high-confidence-row">
-            <td>La Fiorita vs Vardar Skopje</td>
             <td>02:00</td>
+            <td>La Fiorita vs Vardar Skopje</td>
             <td class="">Away Win (63.1%)</td>
             <td class="">Over (61.8%)</td>
             <td class="">No (61.8%)</td>
-            <td class="text-success">Under 9.5 (82.5%)</td>
+            <td class="text-success fw-bold">Under 9.5 (82.5%)</td>
             <td class="text-muted">0-1 (40.3%)</td>
         </tr>
         
