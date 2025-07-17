@@ -8,17 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --primary-color: #ffffff;
-            --secondary-color: #f8f9fa;
-            --accent-color: #6c5ce7;
-            --text-color: #333333;
-            --text-muted: #6c757d;
-            --success-color: #00b894;
-            --warning-color: #fdcb6e;
-            --danger-color: #e17055;
-            --info-color: #0984e3;
-            --highlight-color: #dfe6e9;
-            --border-color: #e9ecef;
+            --primary-color: #121212;
+            --secondary-color: #1e1e1e;
+            --accent-color: #bb86fc;
+            --text-color: #ffffff;
+            --text-muted: #aaaaaa;
+            --success-color: #00c853;
+            --warning-color: #ffab00;
+            --danger-color: #ff5252;
+            --info-color: #2196f3;
         }
         
         body {
@@ -35,12 +33,11 @@
         }
         
         .header {
-            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
-            color: white;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
             padding: 30px;
             margin-bottom: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-bottom: 2px solid var(--accent-color);
             text-align: center;
         }
         
@@ -48,42 +45,40 @@
             font-weight: 700;
             letter-spacing: 1px;
             margin-bottom: 10px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
         
         .header p {
+            color: var(--text-muted);
             font-size: 1.2rem;
-            opacity: 0.9;
         }
         
         .league-section {
             background-color: var(--secondary-color);
             padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
             margin-bottom: 30px;
-            border: 1px solid var(--border-color);
         }
         
         .league-section h3 {
             color: var(--accent-color);
             font-weight: 600;
             margin-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--accent-color);
             padding-bottom: 10px;
         }
         
         .high-confidence-section {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
             padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(108, 92, 231, 0.15);
+            box-shadow: 0 10px 30px rgba(187, 134, 252, 0.3);
             margin-bottom: 30px;
-            border: 1px solid #d6dee6;
+            border: 1px solid var(--accent-color);
         }
         
         .high-confidence-section h2 {
-            color: var(--accent-color);
+            color: var(--success-color);
             font-weight: 700;
             margin-bottom: 20px;
             text-transform: uppercase;
@@ -95,7 +90,6 @@
         .high-confidence-section h2 i {
             margin-right: 10px;
             font-size: 1.5em;
-            color: #e84393;
         }
         
         .table {
@@ -105,20 +99,20 @@
         }
         
         .table-dark {
-            background-color: #495057;
-            color: white;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
         }
         
         .table-striped > tbody > tr:nth-of-type(odd) {
-            background-color: rgba(0, 0, 0, 0.02);
+            background-color: rgba(255, 255, 255, 0.05);
         }
         
         .table-hover > tbody > tr:hover {
-            background-color: rgba(108, 92, 231, 0.05);
+            background-color: rgba(187, 134, 252, 0.1);
         }
         
         .table-success {
-            background-color: rgba(0, 184, 148, 0.1) !important;
+            background-color: rgba(0, 200, 83, 0.15) !important;
         }
         
         .text-success {
@@ -150,7 +144,7 @@
             text-align: center;
             color: var(--text-muted);
             padding: 20px;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid var(--secondary-color);
         }
         
         /* Custom scrollbar */
@@ -169,30 +163,12 @@
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: #5549c9;
-        }
-        
-        /* ปรับแต่งตาราง */
-        .table thead th {
-            background-color: #495057;
-            color: white;
-            border-color: #495057;
-        }
-        
-        .table td, .table th {
-            padding: 12px;
-            vertical-align: middle;
-        }
-        
-        /* ปรับแต่งแถวที่มีความเชื่อมั่นสูง */
-        .high-confidence-row {
-            background-color: rgba(0, 184, 148, 0.1) !important;
-            font-weight: 500;
+            background: #9966cc;
         }
     </style>
 </head>
 <body>
-    <div class="container py-4">
+    <div class="container">
         <div class="header">
             <h1>🏆 UEFA EUROPA LEAGUE & CONFERENCE LEAGUE ANALYSIS</h1>
             <p>July 17-18, 2025 | Advanced ML Predictions with Head-to-Head Data</p>
@@ -204,7 +180,7 @@
         <h2><i class="fas fa-fire"></i> HIGH CONFIDENCE PREDICTIONS (80%+)</h2>
         <div class="table-responsive">
             <table class="table table-striped table-hover">
-                <thead>
+                <thead class="table-dark">
                     <tr>
                         <th>Match</th>
                         <th>Time (Thai)</th>
@@ -215,7 +191,7 @@
                 </thead>
                 <tbody>
     
-        <tr class="high-confidence-row">
+        <tr>
             <td>HJK helsinki vs NSI Runavik</td>
             <td>23:00</td>
             <td>Corners</td>
@@ -223,7 +199,7 @@
             <td class="text-success fw-bold">95.0%</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr>
             <td>Flora Tallinn vs Valur Reykjavik</td>
             <td>23:00</td>
             <td>Corners</td>
@@ -231,7 +207,7 @@
             <td class="text-success fw-bold">95.0%</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr>
             <td>Vikingur Reykjavik vs Malisheva</td>
             <td>01:45</td>
             <td>Corners</td>
@@ -239,7 +215,7 @@
             <td class="text-success fw-bold">94.0%</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr>
             <td>CFR 1907 Cluj vs Paks</td>
             <td>00:30</td>
             <td>Corners</td>
@@ -247,7 +223,7 @@
             <td class="text-success fw-bold">93.5%</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr>
             <td>Sileks vs Dečić</td>
             <td>00:00</td>
             <td>Corners</td>
@@ -255,7 +231,7 @@
             <td class="text-success fw-bold">90.5%</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr>
             <td>F91 Dudelange vs Atlètic Club d'Escaldes</td>
             <td>00:00</td>
             <td>Corners</td>
@@ -263,7 +239,7 @@
             <td class="text-success">87.6%</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr>
             <td>Koper vs Zeljeznicar Sarajevo</td>
             <td>00:30</td>
             <td>Corners</td>
@@ -271,7 +247,7 @@
             <td class="text-success">86.0%</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr>
             <td>Prishtina vs Sheriff Tiraspol</td>
             <td>01:00</td>
             <td>Exact Score</td>
@@ -279,7 +255,7 @@
             <td class="text-success">85%</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr>
             <td>FK Rabotnicki vs Torpedo Zhodino</td>
             <td>23:00</td>
             <td>Exact Score</td>
@@ -287,7 +263,7 @@
             <td class="text-success">85%</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr>
             <td>Vikingur Reykjavik vs Malisheva</td>
             <td>01:45</td>
             <td>Exact Score</td>
@@ -295,7 +271,7 @@
             <td class="text-success">85%</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr>
             <td>Neman vs FC Urartu</td>
             <td>01:00</td>
             <td>Exact Score</td>
@@ -303,7 +279,7 @@
             <td class="text-success">84.0%</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr>
             <td>Aktobe vs Legia Warszawa</td>
             <td>23:00</td>
             <td>Corners</td>
@@ -311,7 +287,7 @@
             <td class="text-success">83.5%</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr>
             <td>Ordabasy vs Torpedo Kutaisi</td>
             <td>23:00</td>
             <td>Exact Score</td>
@@ -319,7 +295,7 @@
             <td class="text-success">82.5%</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr>
             <td>La Fiorita vs Vardar Skopje</td>
             <td>02:00</td>
             <td>Corners</td>
@@ -327,7 +303,7 @@
             <td class="text-success">82.5%</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr>
             <td>Aktobe vs Legia Warszawa</td>
             <td>23:00</td>
             <td>Exact Score</td>
@@ -335,7 +311,7 @@
             <td class="text-success">82.3%</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr>
             <td>Aktobe vs Legia Warszawa</td>
             <td>23:00</td>
             <td>Match Result</td>
@@ -356,7 +332,7 @@
         <h3>UEFA Europa League - July 17-18, 2025</h3>
         <div class="table-responsive">
             <table class="table table-striped table-hover">
-                <thead>
+                <thead class="table-dark">
                     <tr>
                         <th>Match</th>
                         <th>Time (Thai)</th>
@@ -369,7 +345,7 @@
                 </thead>
                 <tbody>
     
-        <tr class="high-confidence-row">
+        <tr class="table-success">
             <td>Aktobe vs Legia Warszawa</td>
             <td>23:00</td>
             <td class="text-success">Away Win (80.4%)</td>
@@ -399,7 +375,7 @@
             <td class="text-muted">1-0 (38.2%)</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr class="table-success">
             <td>CFR 1907 Cluj vs Paks</td>
             <td>00:30</td>
             <td class="text-muted">Home Win (38.2%)</td>
@@ -409,7 +385,7 @@
             <td class="text-muted">1-0 (32.5%)</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr class="table-success">
             <td>Prishtina vs Sheriff Tiraspol</td>
             <td>01:00</td>
             <td class="text-primary">Away Win (75.9%)</td>
@@ -462,7 +438,7 @@
         <h3>UEFA Europa Conference League - July 17-18, 2025</h3>
         <div class="table-responsive">
             <table class="table table-striped table-hover">
-                <thead>
+                <thead class="table-dark">
                     <tr>
                         <th>Match</th>
                         <th>Time (Thai)</th>
@@ -485,7 +461,7 @@
             <td class="text-muted">1-0 (33.5%)</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr class="table-success">
             <td>FK Rabotnicki vs Torpedo Zhodino</td>
             <td>23:00</td>
             <td class="text-primary">Away Win (77.0%)</td>
@@ -535,7 +511,7 @@
             <td class="text-muted">2-1 (34.8%)</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr class="table-success">
             <td>HJK helsinki vs NSI Runavik</td>
             <td>23:00</td>
             <td class="">Away Win (57.9%)</td>
@@ -545,7 +521,7 @@
             <td class="text-muted">1-2 (34.9%)</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr class="table-success">
             <td>Ordabasy vs Torpedo Kutaisi</td>
             <td>23:00</td>
             <td class="">Away Win (57.4%)</td>
@@ -555,7 +531,7 @@
             <td class="text-success">0-1 (82.5%)</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr class="table-success">
             <td>Flora Tallinn vs Valur Reykjavik</td>
             <td>23:00</td>
             <td class="text-muted">Away Win (54.6%)</td>
@@ -585,7 +561,7 @@
             <td class="text-muted">0-1 (33.7%)</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr class="table-success">
             <td>Sileks vs Dečić</td>
             <td>00:00</td>
             <td class="text-muted">Away Win (54.1%)</td>
@@ -615,7 +591,7 @@
             <td class="text-muted">1-2 (34.0%)</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr class="table-success">
             <td>F91 Dudelange vs Atlètic Club d'Escaldes</td>
             <td>00:00</td>
             <td class="">Home Win (55.0%)</td>
@@ -625,7 +601,7 @@
             <td class="text-muted">0-1 (32.3%)</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr class="table-success">
             <td>Koper vs Zeljeznicar Sarajevo</td>
             <td>00:30</td>
             <td class="text-muted">Away Win (42.5%)</td>
@@ -635,7 +611,7 @@
             <td class="text-muted">1-2 (30.4%)</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr class="table-success">
             <td>Neman vs FC Urartu</td>
             <td>01:00</td>
             <td class="text-primary">Home Win (73.6%)</td>
@@ -675,7 +651,7 @@
             <td class="text-muted">1-2 (36.4%)</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr class="table-success">
             <td>Vikingur Reykjavik vs Malisheva</td>
             <td>01:45</td>
             <td class="text-primary">Home Win (77.0%)</td>
@@ -695,7 +671,7 @@
             <td class="text-muted">2-1 (37.0%)</td>
         </tr>
         
-        <tr class="high-confidence-row">
+        <tr class="table-success">
             <td>La Fiorita vs Vardar Skopje</td>
             <td>02:00</td>
             <td class="">Away Win (63.1%)</td>
@@ -713,7 +689,7 @@
         <!-- UEFA Conference League Section End -->
         
         <div class="footer">
-            <p>© 2025 Ultra Advanced Multi-League Football Predictor | Last Updated: 2025-07-17 20:07:52</p>
+            <p>© 2025 Ultra Advanced Multi-League Football Predictor | Last Updated: 2025-07-17 19:46:59</p>
         </div>
     </div>
     
