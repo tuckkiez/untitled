@@ -1,59 +1,42 @@
 #!/bin/bash
 
-# 🚀 Run All Analysis - July 18, 2025
-# รันการวิเคราะห์ทั้งหมดและอัพเดท index.html
+# 🚀 Run All Analysis and Update Website
+# สคริปต์รันการวิเคราะห์ทั้งหมดและอัพเดทเว็บไซต์
 
-# Set up directories
-PROJECT_DIR="/Users/80090/Desktop/Project/untitle"
-OUTPUT_DIR="$PROJECT_DIR/output"
-DATA_DIR="$PROJECT_DIR/data"
+echo "🚀 Starting Ultra Advanced ML Football Analysis Pipeline"
+echo "========================================================"
 
-# Create directories if they don't exist
-mkdir -p "$OUTPUT_DIR"
-mkdir -p "$DATA_DIR"
+# Set current directory
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "$DIR"
 
-# Print header
-echo "🚀 Ultra Advanced Multi-League Football Predictor"
-echo "================================================="
-echo "Running complete analysis for July 18, 2025"
-echo "================================================="
+# Create backup of current index.html
+echo "📦 Creating backup of current index.html..."
+cp index.html index.html.$(date +%Y%m%d%H%M%S).bak
 
 # Run China Super League analysis
-echo ""
 echo "🇨🇳 Running China Super League analysis..."
-python "$PROJECT_DIR/analyze_china_super_league.py"
+python analyze_china_super_league.py
 
-# Run Korea K League 1 analysis (using Ultra Advanced ML)
-echo ""
-echo "🇰🇷 Running Korea K League 1 analysis..."
-python "$PROJECT_DIR/analyze_korea_league_ultra.py"
+# Run Korea K League analysis
+echo "🇰🇷 Running Korea K League analysis..."
+python analyze_korea_league_ultra.py
 
-# Update index.html
-echo ""
-echo "🔄 Updating index.html..."
-python "$PROJECT_DIR/update_index.py"
+# Run European Leagues analysis
+echo "🇪🇺 Running European Leagues analysis..."
+python analyze_european_leagues.py
 
-# Print summary
-echo ""
-echo "================================================="
-echo "✅ Analysis complete!"
-echo "📊 Results available in $OUTPUT_DIR"
-echo "🌐 Updated index.html"
-echo "================================================="
+# Generate European Leagues HTML report (fixed version)
+echo "📊 Generating European Leagues HTML report..."
+python generate_european_report_fixed.py
 
-# Open index.html in browser
-echo "Opening index.html in browser..."
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    # macOS
-    open "$PROJECT_DIR/index.html"
-elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    # Linux
-    xdg-open "$PROJECT_DIR/index.html"
-elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
-    # Windows
-    start "$PROJECT_DIR/index.html"
-else
-    echo "Could not open browser automatically. Please open $PROJECT_DIR/index.html manually."
-fi
+# Update index.html with all analyses (fixed version)
+echo "🌐 Updating website with all analyses..."
+python update_index_with_european_fixed.py
 
-echo "Done!"
+echo "✅ Analysis pipeline completed successfully!"
+echo "📊 Website updated with latest predictions"
+echo "🌐 View the results at index.html"
+
+# Print timestamp
+echo "⏰ Completed at: $(date)"

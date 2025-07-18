@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>🏆 European Leagues Analysis - July 18-19, 2025</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #f8f9fa;
+            --accent-color: #242233;
+            --text-color: #333333;
+            --text-muted: #6c757d;
+            --success-color: #00b894;
+            --warning-color: #fdcb6e;
+            --danger-color: #e17055;
+            --info-color: #0984e3;
+            --highlight-color: #dfe6e9;
+            --border-color: #e9ecef;
+        }
+        
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            font-family: monospace;
+        }
+        
+        .container {
+            max-width: 1400px;
+            padding: 0;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e1a3d 0%, #333e60 100%);
+            color: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .league-section {
+            background-color: var(--secondary-color);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .league-section h3 {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        
+        .high-confidence-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(108, 92, 231, 0.15);
+            margin-bottom: 30px;
+            border: 1px solid #d6dee6;
+        }
+        
+        .high-confidence-section h2 {
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .high-confidence-section h2 i {
+            margin-right: 10px;
+            font-size: 1.5em;
+            color: #e30000;
+        }
+        
+        .table {
+            color: var(--text-color);
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        
+        .table-dark {
+            background-color: #495057;
+            color: white;
+        }
+        
+        .table-striped > tbody > tr:nth-of-type(odd) {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+        
+        .table-hover > tbody > tr:hover {
+            background-color: rgba(108, 92, 231, 0.05);
+        }
+        
+        .table-success {
+            background-color: rgba(0, 184, 148, 0.1) !important;
+        }
+        
+        .text-success {
+            color: var(--success-color) !important;
+        }
+        
+        .text-warning {
+            color: var(--warning-color) !important;
+        }
+        
+        .text-danger {
+            color: var(--danger-color) !important;
+        }
+        
+        .text-primary {
+            color: var(--info-color) !important;
+        }
+        
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+        
+        .fw-bold {
+            font-weight: 700 !important;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: var(--text-muted);
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--primary-color);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5549c9;
+        }
+        
+        /* ปรับแต่งตาราง */
+        .table thead th {
+            background-color: #363636;
+            color: white;
+            border-color: #495057;
+        }
+        
+        .table td, .table th {
+            padding: 12px;
+            vertical-align: middle;
+        }
+        
+        /* ปรับแต่งแถวที่มีความเชื่อมั่นสูง */
+        .high-confidence-row {
+            background-color: rgb(18 251 52 / 10%) !important;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+<div class="container py-4">
+    <div class="header">
+        <h1>🏆 European Leagues Analysis - July 18-19, 2025</h1>
+        <p>Ultra Advanced ML Analysis with Corner Predictions at 10.0 Line</p>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            <h2 class="mb-0">🇳🇴 Norway - Tippeligaen - July 18-19, 2025</h2>
+            <p class="mb-0">Ultra Advanced ML Analysis with Corner Predictions at 10.0 Line</p>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i>
+                <strong>NEW:</strong> Norway - Tippeligaen analysis with Ultra Advanced ML and corner predictions at 10.0 line for 1 matches.
+            </div>
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Time</th>
+                        <th>Match</th>
+                        <th>Match Result</th>
+                        <th>O/U 2.5</th>
+                        <th>Both Teams Score</th>
+                        <th>Corners</th>
+                        <th>Exact Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="high-confidence-row">
+                        <td>23:00</td>
+                        <td>Sarpsborg 08 FF vs Rosenborg</td>
+                        <td class="">Home Win (36.5%)</td>
+                        <td class="">OVER (58.6%)</td>
+                        <td class="text-success fw-bold">YES (80.8%)</td>
+                        <td class="">OVER 10.0 (48.1%)</td>
+                        <td class="text-muted">2-1 (65.0%)</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            <h2 class="mb-0">🇩🇰 Danish SAS Ligaen - July 18-19, 2025</h2>
+            <p class="mb-0">Ultra Advanced ML Analysis with Corner Predictions at 10.0 Line</p>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i>
+                <strong>NEW:</strong> Danish SAS Ligaen analysis with Ultra Advanced ML and corner predictions at 10.0 line for 1 matches.
+            </div>
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Time</th>
+                        <th>Match</th>
+                        <th>Match Result</th>
+                        <th>O/U 2.5</th>
+                        <th>Both Teams Score</th>
+                        <th>Corners</th>
+                        <th>Exact Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="">
+                        <td>00:00</td>
+                        <td>Viborg vs FC Copenhagen</td>
+                        <td class="">Home Win (32.4%)</td>
+                        <td class="">UNDER (48.7%)</td>
+                        <td class="">YES (63.0%)</td>
+                        <td class="">OVER 10.0 (51.2%)</td>
+                        <td class="text-muted">1-1 (55.5%)</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            <h2 class="mb-0">🇮🇪 Ireland FAI Cup - July 18-19, 2025</h2>
+            <p class="mb-0">Ultra Advanced ML Analysis with Corner Predictions at 10.0 Line</p>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i>
+                <strong>NEW:</strong> Ireland FAI Cup analysis with Ultra Advanced ML and corner predictions at 10.0 line for 5 matches.
+            </div>
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Time</th>
+                        <th>Match</th>
+                        <th>Match Result</th>
+                        <th>O/U 2.5</th>
+                        <th>Both Teams Score</th>
+                        <th>Corners</th>
+                        <th>Exact Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="">
+                        <td>01:45</td>
+                        <td>Bray Wanderers vs Wayside Celtic</td>
+                        <td class="">Home Win (42.4%)</td>
+                        <td class="">UNDER (37.7%)</td>
+                        <td class="">YES (61.8%)</td>
+                        <td class="">OVER 10.0 (46.9%)</td>
+                        <td class="text-muted">1-1 (59.3%)</td>
+                    </tr>
+
+                    <tr class="">
+                        <td>01:45</td>
+                        <td>Drogheda United vs Crumlin United</td>
+                        <td class="">Home Win (41.0%)</td>
+                        <td class="">UNDER (41.7%)</td>
+                        <td class="">NO (50.4%)</td>
+                        <td class="">OVER 10.0 (46.9%)</td>
+                        <td class="text-muted">1-0 (59.4%)</td>
+                    </tr>
+
+                    <tr class="">
+                        <td>01:45</td>
+                        <td>Finn Harps vs UCD</td>
+                        <td class="">Home Win (41.7%)</td>
+                        <td class="">UNDER (42.0%)</td>
+                        <td class="">YES (53.3%)</td>
+                        <td class="">OVER 10.0 (57.3%)</td>
+                        <td class="text-muted">1-1 (66.2%)</td>
+                    </tr>
+
+                    <tr class="">
+                        <td>01:45</td>
+                        <td>Galway United vs Tolka Rovers</td>
+                        <td class="">Home Win (48.1%)</td>
+                        <td class="">OVER (55.2%)</td>
+                        <td class="">YES (55.4%)</td>
+                        <td class="">OVER 10.0 (47.0%)</td>
+                        <td class="text-muted">2-1 (51.7%)</td>
+                    </tr>
+
+                    <tr class="high-confidence-row">
+                        <td>01:45</td>
+                        <td>Kerry vs Athlone Town</td>
+                        <td class="">Home Win (39.6%)</td>
+                        <td class="">OVER (41.9%)</td>
+                        <td class="text-success fw-bold">YES (71.2%)</td>
+                        <td class="">OVER 10.0 (43.0%)</td>
+                        <td class="text-muted">3-1 (36.5%)</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            <h2 class="mb-0">🇫🇮 Finnish Premier - Veikkausliiga - July 18-19, 2025</h2>
+            <p class="mb-0">Ultra Advanced ML Analysis with Corner Predictions at 10.0 Line</p>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i>
+                <strong>NEW:</strong> Finnish Premier - Veikkausliiga analysis with Ultra Advanced ML and corner predictions at 10.0 line for 1 matches.
+            </div>
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Time</th>
+                        <th>Match</th>
+                        <th>Match Result</th>
+                        <th>O/U 2.5</th>
+                        <th>Both Teams Score</th>
+                        <th>Corners</th>
+                        <th>Exact Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="">
+                        <td>22:00</td>
+                        <td>Kooteepee vs Inter Turku</td>
+                        <td class="">Home Win (47.6%)</td>
+                        <td class="">UNDER (52.6%)</td>
+                        <td class="">NO (51.1%)</td>
+                        <td class="">OVER 10.0 (52.3%)</td>
+                        <td class="text-muted">2-0 (52.1%)</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            <h2 class="mb-0">🇷🇺 Russian Premier League - July 18-19, 2025</h2>
+            <p class="mb-0">Ultra Advanced ML Analysis with Corner Predictions at 10.0 Line</p>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i>
+                <strong>NEW:</strong> Russian Premier League analysis with Ultra Advanced ML and corner predictions at 10.0 line for 1 matches.
+            </div>
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Time</th>
+                        <th>Match</th>
+                        <th>Match Result</th>
+                        <th>O/U 2.5</th>
+                        <th>Both Teams Score</th>
+                        <th>Corners</th>
+                        <th>Exact Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="">
+                        <td>00:30</td>
+                        <td>Dynamo vs Baltika</td>
+                        <td class="">Home Win (40.7%)</td>
+                        <td class="">OVER (51.2%)</td>
+                        <td class="">YES (61.4%)</td>
+                        <td class="">OVER 10.0 (46.6%)</td>
+                        <td class="text-muted">2-1 (68.4%)</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            <h2 class="mb-0">🇷🇴 Romania Super League - July 18-19, 2025</h2>
+            <p class="mb-0">Ultra Advanced ML Analysis with Corner Predictions at 10.0 Line</p>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i>
+                <strong>NEW:</strong> Romania Super League analysis with Ultra Advanced ML and corner predictions at 10.0 line for 2 matches.
+            </div>
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Time</th>
+                        <th>Match</th>
+                        <th>Match Result</th>
+                        <th>O/U 2.5</th>
+                        <th>Both Teams Score</th>
+                        <th>Corners</th>
+                        <th>Exact Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="">
+                        <td>23:00</td>
+                        <td>AFC Hermannstadt vs Metaloglobus</td>
+                        <td class="">Away Win (34.3%)</td>
+                        <td class="">OVER (56.5%)</td>
+                        <td class="">NO (59.5%)</td>
+                        <td class="">OVER 10.0 (43.7%)</td>
+                        <td class="text-muted">1-1 (63.5%)</td>
+                    </tr>
+
+                    <tr class="">
+                        <td>01:30</td>
+                        <td>Universitatea Craiova vs Arges Pitesti</td>
+                        <td class="">Home Win (34.8%)</td>
+                        <td class="">OVER (48.2%)</td>
+                        <td class="">NO (55.2%)</td>
+                        <td class="">OVER 10.0 (44.6%)</td>
+                        <td class="text-muted">3-0 (47.5%)</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            <h2 class="mb-0">🇵🇱 Poland Division 1 - July 18-19, 2025</h2>
+            <p class="mb-0">Ultra Advanced ML Analysis with Corner Predictions at 10.0 Line</p>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i>
+                <strong>NEW:</strong> Poland Division 1 analysis with Ultra Advanced ML and corner predictions at 10.0 line for 2 matches.
+            </div>
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Time</th>
+                        <th>Match</th>
+                        <th>Match Result</th>
+                        <th>O/U 2.5</th>
+                        <th>Both Teams Score</th>
+                        <th>Corners</th>
+                        <th>Exact Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="">
+                        <td>23:00</td>
+                        <td>Jagiellonia vs Nieciecza</td>
+                        <td class="">Home Win (39.9%)</td>
+                        <td class="">OVER (54.4%)</td>
+                        <td class="">NO (52.2%)</td>
+                        <td class="">OVER 10.0 (50.2%)</td>
+                        <td class="text-muted">2-0 (49.9%)</td>
+                    </tr>
+
+                    <tr class="high-confidence-row">
+                        <td>01:30</td>
+                        <td>Lech Poznan vs Cracovia Krakow</td>
+                        <td class="">Away Win (39.5%)</td>
+                        <td class="text-success fw-bold">OVER (71.3%)</td>
+                        <td class="">NO (56.6%)</td>
+                        <td class="">OVER 10.0 (42.3%)</td>
+                        <td class="text-muted">1-1 (98.8%)</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            <h2 class="mb-0">🇩🇰 Denmark Division 1 - July 18-19, 2025</h2>
+            <p class="mb-0">Ultra Advanced ML Analysis with Corner Predictions at 10.0 Line</p>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i>
+                <strong>NEW:</strong> Denmark Division 1 analysis with Ultra Advanced ML and corner predictions at 10.0 line for 2 matches.
+            </div>
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Time</th>
+                        <th>Match</th>
+                        <th>Match Result</th>
+                        <th>O/U 2.5</th>
+                        <th>Both Teams Score</th>
+                        <th>Corners</th>
+                        <th>Exact Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="">
+                        <td>23:30</td>
+                        <td>HB Koge vs Hobro</td>
+                        <td class="">Home Win (46.9%)</td>
+                        <td class="">OVER (45.9%)</td>
+                        <td class="">YES (42.4%)</td>
+                        <td class="">OVER 10.0 (55.5%)</td>
+                        <td class="text-muted">2-1 (63.8%)</td>
+                    </tr>
+
+                    <tr class="">
+                        <td>00:00</td>
+                        <td>Hvidovre vs B 93</td>
+                        <td class="">Home Win (36.3%)</td>
+                        <td class="">UNDER (55.9%)</td>
+                        <td class="">YES (58.9%)</td>
+                        <td class="">UNDER 10.0 (52.9%)</td>
+                        <td class="text-muted">0-2 (46.3%)</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            <h2 class="mb-0">🇮🇸 Iceland Division 1 - July 18-19, 2025</h2>
+            <p class="mb-0">Ultra Advanced ML Analysis with Corner Predictions at 10.0 Line</p>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i>
+                <strong>NEW:</strong> Iceland Division 1 analysis with Ultra Advanced ML and corner predictions at 10.0 line for 5 matches.
+            </div>
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Time</th>
+                        <th>Match</th>
+                        <th>Match Result</th>
+                        <th>O/U 2.5</th>
+                        <th>Both Teams Score</th>
+                        <th>Corners</th>
+                        <th>Exact Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="high-confidence-row">
+                        <td>01:00</td>
+                        <td>HK Kopavogur vs Thor Akureyri</td>
+                        <td class="">Home Win (35.5%)</td>
+                        <td class="">OVER (39.6%)</td>
+                        <td class="text-success fw-bold">YES (75.0%)</td>
+                        <td class="">OVER 10.0 (58.7%)</td>
+                        <td class="text-muted">2-1 (56.7%)</td>
+                    </tr>
+
+                    <tr class="">
+                        <td>02:15</td>
+                        <td>Keflavik vs Fjolnir</td>
+                        <td class="">Home Win (46.6%)</td>
+                        <td class="">UNDER (42.0%)</td>
+                        <td class="">YES (54.4%)</td>
+                        <td class="">OVER 10.0 (57.7%)</td>
+                        <td class="text-muted">1-1 (59.2%)</td>
+                    </tr>
+
+                    <tr class="">
+                        <td>02:15</td>
+                        <td>Fylkir vs Njardvik</td>
+                        <td class="">Home Win (33.4%)</td>
+                        <td class="">OVER (52.5%)</td>
+                        <td class="">YES (48.3%)</td>
+                        <td class="">OVER 10.0 (44.9%)</td>
+                        <td class="text-muted">1-2 (41.1%)</td>
+                    </tr>
+
+                    <tr class="">
+                        <td>02:15</td>
+                        <td>Grindavik vs Selfoss</td>
+                        <td class="">Home Win (48.4%)</td>
+                        <td class="">OVER (40.5%)</td>
+                        <td class="">YES (49.8%)</td>
+                        <td class="">OVER 10.0 (57.5%)</td>
+                        <td class="text-muted">2-1 (62.5%)</td>
+                    </tr>
+
+                    <tr class="">
+                        <td>02:15</td>
+                        <td>Leiknir R. vs Throttur Reykjavik</td>
+                        <td class="">Home Win (45.5%)</td>
+                        <td class="">UNDER (44.7%)</td>
+                        <td class="">YES (52.8%)</td>
+                        <td class="">OVER 10.0 (54.8%)</td>
+                        <td class="text-muted">1-1 (54.9%)</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Last updated: 2025-07-18 17:05:19</p>
+        <p>© 2025 Ultra Advanced Multi-League Football Predictor</p>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
