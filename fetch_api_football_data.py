@@ -1,279 +1,349 @@
 #!/usr/bin/env python3
 """
-🚀 API-Football Data Fetcher
-สคริปต์สำหรับดึงข้อมูลจาก API-Football
+🚀 Fetch Data from API-Football - July 18, 2025
+ดึงข้อมูลจาก API-Football สำหรับการวิเคราะห์ฟุตบอล
 """
 
 import requests
 import json
 import os
-import time
 from datetime import datetime
 
 class APIFootballFetcher:
-    def __init__(self, api_key):
-        self.api_key = api_key
+    """API-Football Data Fetcher"""
+    
+    def __init__(self):
+        """Initialize the fetcher"""
+        self.api_key = "f9cf9a3854mshf30572945114fb4p105c26jsnbbc82dcea9c0"
+        self.api_host = "api-football-v1.p.rapidapi.com"
         self.base_url = "https://api-football-v1.p.rapidapi.com/v3"
         self.headers = {
-            'x-rapidapi-host': 'api-football-v1.p.rapidapi.com',
-            'x-rapidapi-key': api_key
+            "x-rapidapi-host": self.api_host,
+            "x-rapidapi-key": self.api_key
         }
-        self.output_dir = "api_data"
+        self.data_dir = "/Users/80090/Desktop/Project/untitle/data"
+        os.makedirs(self.data_dir, exist_ok=True)
         
-        # สร้างโฟลเดอร์สำหรับเก็บข้อมูล
-        os.makedirs(self.output_dir, exist_ok=True)
+        print("🚀 Initializing API-Football Fetcher")
+    
+    def fetch_fixtures(self, date="2025-07-18", league=None, season=None):
+        """Fetch fixtures for the specified date"""
+        print(f"📅 Fetching fixtures for date: {date}...")
+        
+        url = f"{self.base_url}/fixtures"
+        params = {"date": date}
+        
+        if league:
+            params["league"] = league
+        
+        if season:
+            params["season"] = season
+        
+        try:
+            response = requests.get(url, headers=self.headers, params=params)
+            response.raise_for_status()
+            data = response.json()
+            
+            # Save data
+            filename = f"fixtures_{date}"
+            if league:
+                filename += f"_league{league}"
+            if season:
+                filename += f"_season{season}"
+            filename += ".json"
+            
+            output_file = os.path.join(self.data_dir, filename)
+            with open(output_file, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+            
+            print(f"✅ Successfully fetched fixtures: {data.get('results', 0)} matches")
+            print(f"✅ Data saved to: {output_file}")
+            
+            return data
+        except Exception as e:
+            print(f"❌ Error fetching fixtures: {str(e)}")
+            return None
+    
+    def fetch_odds(self, fixture_id=None, date=None, league=None, season=None, bookmaker=None, bet=None):
+        """Fetch odds for fixtures"""
+        print(f"💰 Fetching odds...")
+        
+        url = f"{self.base_url}/odds"
+        params = {}
+        
+        if fixture_id:
+            params["fixture"] = fixture_id
+        
+        if date:
+            params["date"] = date
+        
+        if league:
+            params["league"] = league
+        
+        if season:
+            params["season"] = season
+        
+        if bookmaker:
+            params["bookmaker"] = bookmaker
+        
+        if bet:
+            params["bet"] = bet
+        
+        try:
+            response = requests.get(url, headers=self.headers, params=params)
+            response.raise_for_status()
+            data = response.json()
+            
+            # Save data
+            filename = "odds"
+            if fixture_id:
+                filename += f"_fixture{fixture_id}"
+            if date:
+                filename += f"_{date}"
+            if league:
+                filename += f"_league{league}"
+            filename += ".json"
+            
+            output_file = os.path.join(self.data_dir, filename)
+            with open(output_file, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+            
+            print(f"✅ Successfully fetched odds for {data.get('results', 0)} fixtures")
+            print(f"✅ Data saved to: {output_file}")
+            
+            return data
+        except Exception as e:
+            print(f"❌ Error fetching odds: {str(e)}")
+            return None
     
     def fetch_team_statistics(self, team_id, league_id, season):
-        """ดึงข้อมูลสถิติของทีม"""
+        """Fetch team statistics"""
+        print(f"📊 Fetching statistics for team {team_id} in league {league_id} season {season}...")
+        
         url = f"{self.base_url}/teams/statistics"
         params = {
-            'team': str(team_id),
-            'league': str(league_id),
-            'season': str(season)
+            "team": team_id,
+            "league": league_id,
+            "season": season
         }
         
-        print(f"📊 กำลังดึงข้อมูลสถิติของทีม {team_id} ในลีก {league_id} ฤดูกาล {season}...")
-        
         try:
-            response = requests.get(url, headers=self.headers, params=params, timeout=30)
+            response = requests.get(url, headers=self.headers, params=params)
+            response.raise_for_status()
+            data = response.json()
             
-            if response.status_code == 200:
-                data = response.json()
-                
-                # บันทึกข้อมูล
-                filename = f"{self.output_dir}/team_statistics_{team_id}_{league_id}_{season}.json"
-                with open(filename, 'w', encoding='utf-8') as f:
-                    json.dump(data, f, ensure_ascii=False, indent=2)
-                
-                print(f"✅ บันทึกข้อมูลลงไฟล์: {filename}")
-                return data
-            else:
-                print(f"❌ เกิดข้อผิดพลาด: {response.status_code}")
-                print(f"ข้อความ: {response.text}")
-                return None
-        
+            # Save data
+            output_file = os.path.join(self.data_dir, f"team_stats_{team_id}_league{league_id}_season{season}.json")
+            with open(output_file, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+            
+            print(f"✅ Successfully fetched team statistics")
+            print(f"✅ Data saved to: {output_file}")
+            
+            return data
         except Exception as e:
-            print(f"❌ เกิดข้อผิดพลาด: {str(e)}")
+            print(f"❌ Error fetching team statistics: {str(e)}")
             return None
     
-    def fetch_team_info(self, team_id):
-        """ดึงข้อมูลทีม"""
-        url = f"{self.base_url}/teams"
+    def fetch_head_to_head(self, team1_id, team2_id):
+        """Fetch head to head statistics"""
+        print(f"🆚 Fetching head to head statistics for teams {team1_id} vs {team2_id}...")
+        
+        url = f"{self.base_url}/fixtures/headtohead"
         params = {
-            'id': str(team_id)
+            "h2h": f"{team1_id}-{team2_id}"
         }
         
-        print(f"📊 กำลังดึงข้อมูลทีม {team_id}...")
-        
         try:
-            response = requests.get(url, headers=self.headers, params=params, timeout=30)
+            response = requests.get(url, headers=self.headers, params=params)
+            response.raise_for_status()
+            data = response.json()
             
-            if response.status_code == 200:
-                data = response.json()
-                
-                # บันทึกข้อมูล
-                filename = f"{self.output_dir}/team_info_{team_id}.json"
-                with open(filename, 'w', encoding='utf-8') as f:
-                    json.dump(data, f, ensure_ascii=False, indent=2)
-                
-                print(f"✅ บันทึกข้อมูลลงไฟล์: {filename}")
-                return data
-            else:
-                print(f"❌ เกิดข้อผิดพลาด: {response.status_code}")
-                print(f"ข้อความ: {response.text}")
-                return None
-        
+            # Save data
+            output_file = os.path.join(self.data_dir, f"h2h_{team1_id}_vs_{team2_id}.json")
+            with open(output_file, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+            
+            print(f"✅ Successfully fetched head to head statistics: {data.get('results', 0)} matches")
+            print(f"✅ Data saved to: {output_file}")
+            
+            return data
         except Exception as e:
-            print(f"❌ เกิดข้อผิดพลาด: {str(e)}")
+            print(f"❌ Error fetching head to head statistics: {str(e)}")
             return None
     
-    def fetch_odds_bets_types(self):
-        """ดึงข้อมูลประเภทการเดิมพัน"""
-        url = f"{self.base_url}/odds/bets"
+    def fetch_leagues(self, country=None, season=None, team=None):
+        """Fetch leagues"""
+        print(f"🏆 Fetching leagues...")
         
-        print(f"📊 กำลังดึงข้อมูลประเภทการเดิมพัน...")
+        url = f"{self.base_url}/leagues"
+        params = {}
+        
+        if country:
+            params["country"] = country
+        
+        if season:
+            params["season"] = season
+        
+        if team:
+            params["team"] = team
         
         try:
-            response = requests.get(url, headers=self.headers, timeout=30)
+            response = requests.get(url, headers=self.headers, params=params)
+            response.raise_for_status()
+            data = response.json()
             
-            if response.status_code == 200:
-                data = response.json()
-                
-                # บันทึกข้อมูล
-                filename = f"{self.output_dir}/odds_bets_types.json"
-                with open(filename, 'w', encoding='utf-8') as f:
-                    json.dump(data, f, ensure_ascii=False, indent=2)
-                
-                print(f"✅ บันทึกข้อมูลลงไฟล์: {filename}")
-                return data
-            else:
-                print(f"❌ เกิดข้อผิดพลาด: {response.status_code}")
-                print(f"ข้อความ: {response.text}")
-                return None
-        
+            # Save data
+            filename = "leagues"
+            if country:
+                filename += f"_{country}"
+            if season:
+                filename += f"_season{season}"
+            if team:
+                filename += f"_team{team}"
+            filename += ".json"
+            
+            output_file = os.path.join(self.data_dir, filename)
+            with open(output_file, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+            
+            print(f"✅ Successfully fetched {data.get('results', 0)} leagues")
+            print(f"✅ Data saved to: {output_file}")
+            
+            return data
         except Exception as e:
-            print(f"❌ เกิดข้อผิดพลาด: {str(e)}")
+            print(f"❌ Error fetching leagues: {str(e)}")
             return None
     
-    def fetch_odds(self, league_id, season):
-        """ดึงข้อมูลอัตราต่อรอง"""
-        url = f"{self.base_url}/odds"
+    def fetch_standings(self, league_id, season):
+        """Fetch standings"""
+        print(f"📊 Fetching standings for league {league_id} season {season}...")
+        
+        url = f"{self.base_url}/standings"
         params = {
-            'league': str(league_id),
-            'season': str(season)
+            "league": league_id,
+            "season": season
         }
         
-        print(f"📊 กำลังดึงข้อมูลอัตราต่อรองของลีก {league_id} ฤดูกาล {season}...")
-        
         try:
-            response = requests.get(url, headers=self.headers, params=params, timeout=30)
+            response = requests.get(url, headers=self.headers, params=params)
+            response.raise_for_status()
+            data = response.json()
             
-            if response.status_code == 200:
-                data = response.json()
-                
-                # บันทึกข้อมูล
-                filename = f"{self.output_dir}/odds_{league_id}_{season}.json"
-                with open(filename, 'w', encoding='utf-8') as f:
-                    json.dump(data, f, ensure_ascii=False, indent=2)
-                
-                print(f"✅ บันทึกข้อมูลลงไฟล์: {filename}")
-                return data
-            else:
-                print(f"❌ เกิดข้อผิดพลาด: {response.status_code}")
-                print(f"ข้อความ: {response.text}")
-                return None
-        
+            # Save data
+            output_file = os.path.join(self.data_dir, f"standings_league{league_id}_season{season}.json")
+            with open(output_file, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+            
+            print(f"✅ Successfully fetched standings")
+            print(f"✅ Data saved to: {output_file}")
+            
+            return data
         except Exception as e:
-            print(f"❌ เกิดข้อผิดพลาด: {str(e)}")
+            print(f"❌ Error fetching standings: {str(e)}")
             return None
     
-    def fetch_fixtures(self, date):
-        """ดึงข้อมูลการแข่งขันตามวันที่"""
-        url = f"{self.base_url}/fixtures"
-        params = {
-            'date': date
-        }
+    def fetch_korea_k_league_data(self, date="2025-07-18", season=2025):
+        """Fetch all relevant data for Korea K League 1"""
+        print(f"🇰🇷 Fetching all data for Korea K League 1...")
         
-        print(f"📊 กำลังดึงข้อมูลการแข่งขันวันที่ {date}...")
+        # League ID for Korea K League 1 is 292
+        league_id = 292
         
-        try:
-            response = requests.get(url, headers=self.headers, params=params, timeout=30)
-            
-            if response.status_code == 200:
-                data = response.json()
-                
-                # บันทึกข้อมูล
-                filename = f"{self.output_dir}/fixtures_{date}.json"
-                with open(filename, 'w', encoding='utf-8') as f:
-                    json.dump(data, f, ensure_ascii=False, indent=2)
-                
-                print(f"✅ บันทึกข้อมูลลงไฟล์: {filename}")
-                return data
-            else:
-                print(f"❌ เกิดข้อผิดพลาด: {response.status_code}")
-                print(f"ข้อความ: {response.text}")
-                return None
+        # 1. Fetch fixtures
+        fixtures_data = self.fetch_fixtures(date=date, league=league_id, season=season)
         
-        except Exception as e:
-            print(f"❌ เกิดข้อผิดพลาด: {str(e)}")
+        if not fixtures_data or fixtures_data.get("results", 0) == 0:
+            print("❌ No fixtures found for Korea K League 1")
             return None
+        
+        # 2. Fetch odds for these fixtures
+        odds_data = self.fetch_odds(date=date, league=league_id, season=season)
+        
+        # 3. Fetch standings
+        standings_data = self.fetch_standings(league_id=league_id, season=season)
+        
+        # 4. For each fixture, fetch team statistics and head to head
+        fixtures = fixtures_data.get("response", [])
+        for fixture in fixtures:
+            fixture_id = fixture.get("fixture", {}).get("id")
+            home_team_id = fixture.get("teams", {}).get("home", {}).get("id")
+            away_team_id = fixture.get("teams", {}).get("away", {}).get("id")
+            home_team_name = fixture.get("teams", {}).get("home", {}).get("name")
+            away_team_name = fixture.get("teams", {}).get("away", {}).get("name")
+            
+            print(f"📋 Processing fixture {fixture_id}: {home_team_name} vs {away_team_name}")
+            
+            # Fetch team statistics
+            self.fetch_team_statistics(team_id=home_team_id, league_id=league_id, season=season)
+            self.fetch_team_statistics(team_id=away_team_id, league_id=league_id, season=season)
+            
+            # Fetch head to head
+            self.fetch_head_to_head(team1_id=home_team_id, team2_id=away_team_id)
+        
+        print(f"✅ Successfully fetched all data for Korea K League 1")
+        return {
+            "fixtures": fixtures_data,
+            "odds": odds_data,
+            "standings": standings_data
+        }
     
-    def fetch_fixtures_by_league(self, league_id, season):
-        """ดึงข้อมูลการแข่งขันตามลีกและฤดูกาล"""
-        url = f"{self.base_url}/fixtures"
-        params = {
-            'league': str(league_id),
-            'season': str(season)
-        }
+    def fetch_china_super_league_data(self, date="2025-07-18", season=2025):
+        """Fetch all relevant data for China Super League"""
+        print(f"🇨🇳 Fetching all data for China Super League...")
         
-        print(f"📊 กำลังดึงข้อมูลการแข่งขันของลีก {league_id} ฤดูกาล {season}...")
+        # League ID for China Super League is 169
+        league_id = 169
         
-        try:
-            response = requests.get(url, headers=self.headers, params=params, timeout=30)
-            
-            if response.status_code == 200:
-                data = response.json()
-                
-                # บันทึกข้อมูล
-                filename = f"{self.output_dir}/fixtures_league_{league_id}_{season}.json"
-                with open(filename, 'w', encoding='utf-8') as f:
-                    json.dump(data, f, ensure_ascii=False, indent=2)
-                
-                print(f"✅ บันทึกข้อมูลลงไฟล์: {filename}")
-                return data
-            else:
-                print(f"❌ เกิดข้อผิดพลาด: {response.status_code}")
-                print(f"ข้อความ: {response.text}")
-                return None
+        # 1. Fetch fixtures
+        fixtures_data = self.fetch_fixtures(date=date, league=league_id, season=season)
         
-        except Exception as e:
-            print(f"❌ เกิดข้อผิดพลาด: {str(e)}")
+        if not fixtures_data or fixtures_data.get("results", 0) == 0:
+            print("❌ No fixtures found for China Super League")
             return None
-    
-    def fetch_fixture_statistics(self, fixture_id):
-        """ดึงข้อมูลสถิติของการแข่งขัน"""
-        url = f"{self.base_url}/fixtures/statistics"
-        params = {
-            'fixture': str(fixture_id)
-        }
         
-        print(f"📊 กำลังดึงข้อมูลสถิติของการแข่งขัน {fixture_id}...")
+        # 2. Fetch odds for these fixtures
+        odds_data = self.fetch_odds(date=date, league=league_id, season=season)
         
-        try:
-            response = requests.get(url, headers=self.headers, params=params, timeout=30)
+        # 3. Fetch standings
+        standings_data = self.fetch_standings(league_id=league_id, season=season)
+        
+        # 4. For each fixture, fetch team statistics and head to head
+        fixtures = fixtures_data.get("response", [])
+        for fixture in fixtures:
+            fixture_id = fixture.get("fixture", {}).get("id")
+            home_team_id = fixture.get("teams", {}).get("home", {}).get("id")
+            away_team_id = fixture.get("teams", {}).get("away", {}).get("id")
+            home_team_name = fixture.get("teams", {}).get("home", {}).get("name")
+            away_team_name = fixture.get("teams", {}).get("away", {}).get("name")
             
-            if response.status_code == 200:
-                data = response.json()
-                
-                # บันทึกข้อมูล
-                filename = f"{self.output_dir}/fixture_statistics_{fixture_id}.json"
-                with open(filename, 'w', encoding='utf-8') as f:
-                    json.dump(data, f, ensure_ascii=False, indent=2)
-                
-                print(f"✅ บันทึกข้อมูลลงไฟล์: {filename}")
-                return data
-            else:
-                print(f"❌ เกิดข้อผิดพลาด: {response.status_code}")
-                print(f"ข้อความ: {response.text}")
-                return None
+            print(f"📋 Processing fixture {fixture_id}: {home_team_name} vs {away_team_name}")
+            
+            # Fetch team statistics
+            self.fetch_team_statistics(team_id=home_team_id, league_id=league_id, season=season)
+            self.fetch_team_statistics(team_id=away_team_id, league_id=league_id, season=season)
+            
+            # Fetch head to head
+            self.fetch_head_to_head(team1_id=home_team_id, team2_id=away_team_id)
         
-        except Exception as e:
-            print(f"❌ เกิดข้อผิดพลาด: {str(e)}")
-            return None
+        print(f"✅ Successfully fetched all data for China Super League")
+        return {
+            "fixtures": fixtures_data,
+            "odds": odds_data,
+            "standings": standings_data
+        }
 
 def main():
-    """ฟังก์ชันหลัก"""
-    print("🚀 API-Football Data Fetcher")
-    print("=" * 60)
+    """Main function"""
+    fetcher = APIFootballFetcher()
     
-    # API key
-    api_key = "f9cf9a3854mshf30572945114fb4p105c26jsnbbc82dcea9c0"
+    # Fetch data for Korea K League 1
+    korea_data = fetcher.fetch_korea_k_league_data()
     
-    # สร้าง fetcher
-    fetcher = APIFootballFetcher(api_key)
+    # Fetch data for China Super League
+    china_data = fetcher.fetch_china_super_league_data()
     
-    # ดึงข้อมูลสถิติของทีม
-    fetcher.fetch_team_statistics(33, 39, 2020)  # Manchester United, Premier League, 2020
-    
-    # หน่วงเวลาเล็กน้อยเพื่อไม่ให้ API โดน rate limit
-    time.sleep(1)
-    
-    # ดึงข้อมูลทีม
-    fetcher.fetch_team_info(33)  # Manchester United
-    
-    # หน่วงเวลาเล็กน้อยเพื่อไม่ให้ API โดน rate limit
-    time.sleep(1)
-    
-    # ดึงข้อมูลประเภทการเดิมพัน
-    fetcher.fetch_odds_bets_types()
-    
-    # หน่วงเวลาเล็กน้อยเพื่อไม่ให้ API โดน rate limit
-    time.sleep(1)
-    
-    # ดึงข้อมูลอัตราต่อรอง
-    fetcher.fetch_odds(39, 2020)  # Premier League, 2020
-    
-    print("\n✅ เสร็จสมบูรณ์!")
+    print("\n✅ Data fetching complete!")
 
 if __name__ == "__main__":
     main()
