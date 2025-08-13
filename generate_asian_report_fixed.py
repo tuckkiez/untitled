@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-🚀 European Leagues HTML Report Generator (Fixed)
-สร้างรายงาน HTML สำหรับการวิเคราะห์ลีกยุโรป (เวอร์ชันที่แก้ไขแล้ว)
+🚀 Asian Leagues HTML Report Generator (Fixed)
+สร้างรายงาน HTML สำหรับการวิเคราะห์ลีกเอเชีย (แก้ไขแล้ว)
 """
 
 import json
@@ -12,7 +12,7 @@ from datetime import datetime
 def load_analysis_data():
     """Load analysis data from JSON file"""
     try:
-        with open('european_leagues_analysis.json', 'r') as f:
+        with open('asian_leagues_analysis.json', 'r') as f:
             return json.load(f)
     except:
         print("Error: Could not load analysis data")
@@ -100,7 +100,7 @@ def generate_html_report(matches):
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>🏆 European Leagues Analysis - July 18-19, 2025</title>
+    <title>🏆 Asian Leagues Analysis - July 19, 2025</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
     <style>
@@ -291,7 +291,7 @@ def generate_html_report(matches):
 <body>
 <div class="container py-4">
     <div class="header">
-        <h1>🏆 European Leagues Analysis - July 18-19, 2025</h1>
+        <h1>🏆 Asian Leagues Analysis - July 19, 2025</h1>
         <p>Ultra Advanced ML Analysis with Corner Predictions at 10.0 Line</p>
     </div>
 """
@@ -302,28 +302,18 @@ def generate_html_report(matches):
             continue
         
         # Get league flag emoji
-        flag_emoji = "🇪🇺"  # Default
-        if "Norway" in league_name:
-            flag_emoji = "🇳🇴"
-        elif "Danish" in league_name or "Denmark" in league_name:
-            flag_emoji = "🇩🇰"
-        elif "Ireland" in league_name:
-            flag_emoji = "🇮🇪"
-        elif "Finnish" in league_name or "Finland" in league_name:
-            flag_emoji = "🇫🇮"
-        elif "Russian" in league_name or "Russia" in league_name:
-            flag_emoji = "🇷🇺"
-        elif "Romania" in league_name:
-            flag_emoji = "🇷🇴"
-        elif "Poland" in league_name:
-            flag_emoji = "🇵🇱"
-        elif "Iceland" in league_name:
-            flag_emoji = "🇮🇸"
+        flag_emoji = "🇦🇸"  # Default
+        if "China" in league_name:
+            flag_emoji = "🇨🇳"
+        elif "Japan" in league_name:
+            flag_emoji = "🇯🇵"
+        elif "Korea" in league_name:
+            flag_emoji = "🇰🇷"
         
         html += f"""
     <div class="card mb-4">
         <div class="card-header bg-dark text-white">
-            <h2 class="mb-0">{flag_emoji} {league_name} - July 18-19, 2025</h2>
+            <h2 class="mb-0">{flag_emoji} {league_name} - July 19, 2025</h2>
             <p class="mb-0">Ultra Advanced ML Analysis with Corner Predictions at 10.0 Line</p>
         </div>
         <div class="card-body">
@@ -406,7 +396,7 @@ def generate_html_report(matches):
     
     return html
 
-def save_html_report(html_content, filename="european_leagues_report.html"):
+def save_html_report(html_content, filename="asian_leagues_report.html"):
     """Save HTML report to file"""
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(html_content)
@@ -418,7 +408,7 @@ def main():
     matches = load_analysis_data()
     
     if not matches:
-        print("No analysis data found. Please run analyze_european_leagues.py first.")
+        print("No analysis data found. Please run analyze_asian_leagues_fixed.py first.")
         return
     
     # Generate HTML report

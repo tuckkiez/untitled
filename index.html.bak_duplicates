@@ -225,7 +225,7 @@
 <td class="">UNDER (48.6%)</td>
 <td class="">YES (60.5%)</td>
 <td class="">OVER 10.0 (50.0%)</td>
-<td class="text-muted">2-1 (46.8%)</td>
+<td class="text-muted">2-0 (46.8%)</td>
 </tr>
 <tr class="">
 <td>18:35</td>
@@ -343,7 +343,7 @@
 <td class="">UNDER (51.4%)</td>
 <td class="">YES (62.7%)</td>
 <td class="">OVER 10.0 (51.1%)</td>
-<td class="text-muted">2-1 (48.7%)</td>
+<td class="text-muted">2-0 (48.7%)</td>
 </tr>
 </tbody>
 </table>
@@ -410,6 +410,202 @@
 </div>
 <div class="card mb-4">
 <div class="card-header bg-dark text-white">
+<h2 class="mb-0">🇳🇴 Norway - Tippeligaen - July 19, 2025</h2>
+<p class="mb-0">Ultra Advanced ML Analysis with Corner Predictions at 10.0 Line</p>
+</div>
+<div class="card-body">
+<table class="table table-striped table-hover">
+<thead class="table-dark">
+<tr>
+<th>Time</th>
+<th>Match</th>
+<th>Match Result</th>
+<th>O/U 2.5</th>
+<th>Both Teams Score</th>
+<th>Corners</th>
+<th>Exact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td>19:00</td>
+<td>KFUM Oslo vs Brann</td>
+<td class="">Home Win (40.8%)</td>
+<td class="">UNDER (42.9%)</td>
+<td class="">YES (48.5%)</td>
+<td class="">UNDER 10.0 (56.1%)</td>
+<td class="text-muted">1-1 (51.6%)</td>
+</tr>
+<tr class="">
+<td>21:00</td>
+<td>Molde vs Stromsgodset</td>
+<td class="">Home Win (42.8%)</td>
+<td class="">UNDER (53.2%)</td>
+<td class="">YES (43.8%)</td>
+<td class="">UNDER 10.0 (56.1%)</td>
+<td class="text-muted">1-1 (55.5%)</td>
+</tr>
+<tr class="">
+<td>23:00</td>
+<td>Viking vs Bodo/Glimt</td>
+<td class="">Home Win (44.3%)</td>
+<td class="">OVER (58.0%)</td>
+<td class="">YES (53.2%)</td>
+<td class="">UNDER 10.0 (55.3%)</td>
+<td class="text-muted">2-1 (46.1%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div><div class="card mb-4">
+<div class="card-header bg-dark text-white">
+<h2 class="mb-0">🇮🇸 Iceland - Premier League - July 19, 2025</h2>
+<p class="mb-0">Ultra Advanced ML Analysis with Corner Predictions at 10.0 Line</p>
+</div>
+<div class="card-body">
+<table class="table table-striped table-hover">
+<thead class="table-dark">
+<tr>
+<th>Time</th>
+<th>Match</th>
+<th>Match Result</th>
+<th>O/U 2.5</th>
+<th>Both Teams Score</th>
+<th>Corners</th>
+<th>Exact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td>20:00</td>
+<td>Valur vs KR Reykjavik</td>
+<td class="">Home Win (46.7%)</td>
+<td class="">OVER (46.4%)</td>
+<td class="">YES (62.6%)</td>
+<td class="">UNDER 10.0 (52.2%)</td>
+<td class="text-muted">2-1 (47.1%)</td>
+</tr>
+<tr class="">
+<td>22:15</td>
+<td>Breidablik vs Vikingur Reykjavik</td>
+<td class="">Home Win (37.7%)</td>
+<td class="">UNDER (44.9%)</td>
+<td class="">NO (48.8%)</td>
+<td class="">UNDER 10.0 (63.2%)</td>
+<td class="text-muted">1-0 (58.0%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div><div class="card mb-4">
+<div class="card-header bg-dark text-white">
+<h2 class="mb-0">🇩🇰 Denmark - Division 1 - July 19, 2025</h2>
+<p class="mb-0">Ultra Advanced ML Analysis with Corner Predictions at 10.0 Line</p>
+</div>
+<div class="card-body">
+<table class="table table-striped table-hover">
+<thead class="table-dark">
+<tr>
+<th>Time</th>
+<th>Match</th>
+<th>Match Result</th>
+<th>O/U 2.5</th>
+<th>Both Teams Score</th>
+<th>Corners</th>
+<th>Exact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td>19:00</td>
+<td>Kolding IF vs Aalborg</td>
+<td class="">Away Win (30.3%)</td>
+<td class="">UNDER (51.6%)</td>
+<td class="">NO (51.8%)</td>
+<td class="">OVER 10.0 (55.8%)</td>
+<td class="text-muted">0-1 (76.2%)</td>
+</tr>
+<tr class="">
+<td>19:00</td>
+<td>Hillerød vs Middelfart</td>
+<td class="">Home Win (38.5%)</td>
+<td class="">OVER (57.4%)</td>
+<td class="">YES (51.9%)</td>
+<td class="">OVER 10.0 (49.7%)</td>
+<td class="text-muted">2-1 (50.8%)</td>
+</tr>
+<tr class="">
+<td>21:00</td>
+<td>AC Horsens vs Aarhus Fremad</td>
+<td class="">Home Win (39.1%)</td>
+<td class="">UNDER (46.8%)</td>
+<td class="">YES (50.2%)</td>
+<td class="">OVER 10.0 (49.7%)</td>
+<td class="text-muted">1-1 (51.7%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div><div class="card mb-4">
+<div class="card-header bg-dark text-white">
+<h2 class="mb-0">🇫🇮 Finland - Ykkonen - July 19, 2025</h2>
+<p class="mb-0">Ultra Advanced ML Analysis with Corner Predictions at 10.0 Line</p>
+</div>
+<div class="card-body">
+<table class="table table-striped table-hover">
+<thead class="table-dark">
+<tr>
+<th>Time</th>
+<th>Match</th>
+<th>Match Result</th>
+<th>O/U 2.5</th>
+<th>Both Teams Score</th>
+<th>Corners</th>
+<th>Exact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td>17:00</td>
+<td>KTP vs Jaro</td>
+<td class="">Home Win (45.5%)</td>
+<td class="">UNDER (39.6%)</td>
+<td class="">YES (59.0%)</td>
+<td class="">OVER 10.0 (51.3%)</td>
+<td class="text-muted">2-0 (48.5%)</td>
+</tr>
+<tr class="">
+<td>17:00</td>
+<td>EIF vs MP</td>
+<td class="">Home Win (31.8%)</td>
+<td class="">OVER (48.0%)</td>
+<td class="">YES (44.6%)</td>
+<td class="">OVER 10.0 (54.0%)</td>
+<td class="text-muted">2-1 (60.1%)</td>
+</tr>
+<tr class="">
+<td>17:00</td>
+<td>JJK vs KPV</td>
+<td class="">Home Win (33.6%)</td>
+<td class="">UNDER (41.2%)</td>
+<td class="">NO (49.3%)</td>
+<td class="">OVER 10.0 (51.4%)</td>
+<td class="text-muted">1-0 (58.0%)</td>
+</tr>
+<tr class="">
+<td>17:00</td>
+<td>JIPPO vs Gnistan</td>
+<td class="">Home Win (37.2%)</td>
+<td class="">UNDER (42.9%)</td>
+<td class="">NO (62.4%)</td>
+<td class="">UNDER 10.0 (54.8%)</td>
+<td class="text-muted">1-0 (63.9%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div><div class="card mb-4">
+<div class="card-header bg-dark text-white">
 <h2 class="mb-0">🇳🇴 Norway - Eliteserien - July 19, 2025</h2>
 <p class="mb-0">Ultra Advanced ML Analysis with Corner Predictions at 10.0 Line</p>
 </div>
@@ -428,30 +624,30 @@
 </thead>
 <tbody>
 <tr class="">
-<td>00:00</td>
+<td>19:00</td>
 <td>KFUM Oslo vs Brann</td>
 <td class="">Home Win (40.8%)</td>
-<td class="">UNDER (55.8%)</td>
-<td class="">YES (65.6%)</td>
-<td class="">UNDER 10.0 (58.9%)</td>
+<td class="">UNDER (42.9%)</td>
+<td class="">YES (48.5%)</td>
+<td class="">UNDER 10.0 (56.1%)</td>
 <td class="text-muted">1-1 (51.6%)</td>
 </tr>
 <tr class="">
-<td>02:00</td>
+<td>21:00</td>
 <td>Molde vs Stromsgodset</td>
 <td class="">Home Win (42.8%)</td>
-<td class="">UNDER (63.1%)</td>
-<td class="">YES (60.1%)</td>
-<td class="">UNDER 10.0 (54.5%)</td>
+<td class="">UNDER (53.2%)</td>
+<td class="">YES (43.8%)</td>
+<td class="">UNDER 10.0 (56.1%)</td>
 <td class="text-muted">1-1 (55.5%)</td>
 </tr>
-<tr class="high-confidence-row">
-<td>04:00</td>
+<tr class="">
+<td>23:00</td>
 <td>Viking vs Bodo/Glimt</td>
 <td class="">Home Win (44.3%)</td>
-<td class="text-success fw-bold">OVER (72.6%)</td>
-<td class="">YES (51.9%)</td>
-<td class="">OVER 10.0 (45.5%)</td>
+<td class="">OVER (58.0%)</td>
+<td class="">YES (53.2%)</td>
+<td class="">UNDER 10.0 (55.3%)</td>
 <td class="text-muted">2-1 (46.1%)</td>
 </tr>
 </tbody>
@@ -476,31 +672,31 @@
 </tr>
 </thead>
 <tbody>
-<tr class="high-confidence-row">
-<td>00:00</td>
+<tr class="">
+<td>19:00</td>
 <td>Djurgardens IF vs IF Elfsborg</td>
 <td class="">Home Win (56.2%)</td>
-<td class="">UNDER (42.5%)</td>
-<td class="text-success fw-bold">YES (71.6%)</td>
-<td class="">OVER 10.0 (45.7%)</td>
+<td class="">UNDER (55.3%)</td>
+<td class="">YES (60.6%)</td>
+<td class="">OVER 10.0 (50.5%)</td>
 <td class="text-muted">2-1 (42.4%)</td>
 </tr>
 <tr class="high-confidence-row">
-<td>02:00</td>
+<td>21:00</td>
 <td>Osters IF vs Malmo FF</td>
 <td class="">Home Win (37.6%)</td>
 <td class="text-success fw-bold">OVER (79.8%)</td>
 <td class="text-success fw-bold">YES (79.8%)</td>
-<td class="">OVER 10.0 (50.1%)</td>
+<td class="">OVER 10.0 (52.0%)</td>
 <td class="text-muted">1-2 (34.5%)</td>
 </tr>
 <tr class="">
-<td>04:00</td>
+<td>23:00</td>
 <td>Degerfors IF vs Gais</td>
 <td class="">Home Win (44.0%)</td>
-<td class="">OVER (45.5%)</td>
-<td class="">YES (47.6%)</td>
-<td class="">OVER 10.0 (51.2%)</td>
+<td class="">OVER (53.9%)</td>
+<td class="">YES (46.4%)</td>
+<td class="">UNDER 10.0 (53.5%)</td>
 <td class="text-muted">2-1 (59.6%)</td>
 </tr>
 </tbody>
@@ -526,30 +722,30 @@
 </thead>
 <tbody>
 <tr class="">
-<td>00:45</td>
+<td>19:45</td>
 <td>Lech Poznan vs Cracovia Krakow</td>
 <td class="">Home Win (35.9%)</td>
-<td class="">OVER (64.5%)</td>
-<td class="">YES (63.9%)</td>
-<td class="">OVER 10.0 (52.0%)</td>
+<td class="">OVER (45.8%)</td>
+<td class="">YES (52.6%)</td>
+<td class="">UNDER 10.0 (57.6%)</td>
 <td class="text-muted">2-1 (56.9%)</td>
 </tr>
 <tr class="">
-<td>00:45</td>
+<td>19:45</td>
 <td>Widzew Łódź vs Zaglebie Lubin</td>
 <td class="">Home Win (36.5%)</td>
-<td class="">UNDER (50.6%)</td>
-<td class="">YES (44.5%)</td>
-<td class="">OVER 10.0 (51.2%)</td>
+<td class="">UNDER (45.5%)</td>
+<td class="">YES (41.9%)</td>
+<td class="">OVER 10.0 (45.3%)</td>
 <td class="text-muted">1-1 (63.5%)</td>
 </tr>
-<tr class="">
-<td>03:30</td>
+<tr class="high-confidence-row">
+<td>22:30</td>
 <td>Wisla Plock vs Korona Kielce</td>
 <td class="">Home Win (37.7%)</td>
-<td class="">OVER (63.2%)</td>
-<td class="">YES (69.8%)</td>
-<td class="">OVER 10.0 (50.9%)</td>
+<td class="">OVER (43.3%)</td>
+<td class="text-success fw-bold">YES (73.8%)</td>
+<td class="">OVER 10.0 (53.9%)</td>
 <td class="text-muted">2-1 (53.2%)</td>
 </tr>
 </tbody>
@@ -574,22 +770,22 @@
 </tr>
 </thead>
 <tbody>
-<tr class="">
-<td>01:00</td>
+<tr class="high-confidence-row">
+<td>20:00</td>
 <td>Breidablik vs Vestri</td>
 <td class="">Home Win (35.2%)</td>
-<td class="">OVER (65.7%)</td>
-<td class="">YES (68.8%)</td>
-<td class="">OVER 10.0 (56.9%)</td>
+<td class="text-success fw-bold">OVER (73.1%)</td>
+<td class="text-success fw-bold">YES (70.6%)</td>
+<td class="">OVER 10.0 (52.6%)</td>
 <td class="text-muted">1-2 (38.3%)</td>
 </tr>
 <tr class="">
-<td>03:15</td>
+<td>22:15</td>
 <td>KA Akureyri vs IA Akranes</td>
 <td class="">Home Win (46.2%)</td>
-<td class="">UNDER (43.7%)</td>
-<td class="">YES (69.3%)</td>
-<td class="">OVER 10.0 (58.9%)</td>
+<td class="">OVER (69.3%)</td>
+<td class="">YES (58.1%)</td>
+<td class="">OVER 10.0 (53.2%)</td>
 <td class="text-muted">2-1 (44.3%)</td>
 </tr>
 </tbody>
@@ -615,40 +811,40 @@
 </thead>
 <tbody>
 <tr class="">
-<td>20:00</td>
+<td>19:00</td>
 <td>Oddevold vs Orgryte IS</td>
 <td class="">Away Win (30.7%)</td>
-<td class="">UNDER (50.1%)</td>
-<td class="">NO (64.1%)</td>
-<td class="">OVER 10.0 (52.3%)</td>
+<td class="">UNDER (57.9%)</td>
+<td class="">NO (65.2%)</td>
+<td class="">OVER 10.0 (53.1%)</td>
 <td class="text-muted">0-1 (82.2%)</td>
 </tr>
 <tr class="">
-<td>20:00</td>
+<td>19:00</td>
 <td>Umeå FC vs Orebro SK</td>
 <td class="">Home Win (40.0%)</td>
-<td class="">OVER (54.0%)</td>
-<td class="">NO (52.6%)</td>
-<td class="">OVER 10.0 (42.4%)</td>
-<td class="text-muted">3-0 (60.6%)</td>
+<td class="">UNDER (48.9%)</td>
+<td class="">NO (46.5%)</td>
+<td class="">OVER 10.0 (53.1%)</td>
+<td class="text-muted">1-0 (60.6%)</td>
 </tr>
-<tr class="">
-<td>20:00</td>
+<tr class="high-confidence-row">
+<td>21:00</td>
 <td>Ostersunds FK vs falkenbergs FF</td>
 <td class="">Home Win (51.1%)</td>
-<td class="">OVER (55.9%)</td>
-<td class="">YES (58.8%)</td>
-<td class="">OVER 10.0 (53.4%)</td>
+<td class="text-success fw-bold">OVER (76.7%)</td>
+<td class="">YES (61.1%)</td>
+<td class="">OVER 10.0 (46.9%)</td>
 <td class="text-muted">2-1 (45.2%)</td>
 </tr>
 <tr class="">
-<td>22:00</td>
+<td>21:00</td>
 <td>Sandviken vs Vasteras SK FK</td>
 <td class="">Home Win (39.1%)</td>
-<td class="">OVER (47.9%)</td>
-<td class="">YES (42.9%)</td>
-<td class="">UNDER 10.0 (53.6%)</td>
-<td class="text-muted">2-1 (58.2%)</td>
+<td class="">OVER (42.6%)</td>
+<td class="">NO (46.8%)</td>
+<td class="">UNDER 10.0 (52.1%)</td>
+<td class="text-muted">3-0 (58.2%)</td>
 </tr>
 </tbody>
 </table>
@@ -672,41 +868,41 @@
 </tr>
 </thead>
 <tbody>
-<tr class="high-confidence-row">
-<td>00:00</td>
+<tr class="">
+<td>19:00</td>
 <td>Hvidovre vs B 93</td>
 <td class="">Home Win (59.0%)</td>
-<td class="text-success fw-bold">OVER (72.0%)</td>
-<td class="text-success fw-bold">YES (76.0%)</td>
-<td class="">OVER 10.0 (56.6%)</td>
+<td class="">OVER (54.7%)</td>
+<td class="">YES (68.9%)</td>
+<td class="">OVER 10.0 (43.1%)</td>
 <td class="text-muted">4-1 (34.9%)</td>
 </tr>
 <tr class="">
 <td>19:00</td>
 <td>Kolding IF vs Aalborg</td>
 <td class="">Away Win (30.3%)</td>
-<td class="">UNDER (54.5%)</td>
+<td class="">UNDER (51.6%)</td>
 <td class="">NO (51.8%)</td>
-<td class="">OVER 10.0 (56.9%)</td>
+<td class="">OVER 10.0 (55.8%)</td>
 <td class="text-muted">0-1 (76.2%)</td>
 </tr>
 <tr class="">
 <td>19:00</td>
 <td>Hillerød vs Middelfart</td>
 <td class="">Home Win (38.5%)</td>
-<td class="">OVER (45.8%)</td>
-<td class="">NO (42.4%)</td>
-<td class="">OVER 10.0 (56.8%)</td>
-<td class="text-muted">3-0 (50.8%)</td>
+<td class="">OVER (57.4%)</td>
+<td class="">YES (51.9%)</td>
+<td class="">OVER 10.0 (49.7%)</td>
+<td class="text-muted">2-1 (50.8%)</td>
 </tr>
-<tr class="high-confidence-row">
+<tr class="">
 <td>21:00</td>
 <td>AC Horsens vs Aarhus Fremad</td>
 <td class="">Home Win (39.1%)</td>
-<td class="text-success fw-bold">OVER (75.0%)</td>
-<td class="">YES (56.3%)</td>
-<td class="">OVER 10.0 (46.4%)</td>
-<td class="text-muted">2-1 (51.7%)</td>
+<td class="">UNDER (46.8%)</td>
+<td class="">YES (50.2%)</td>
+<td class="">OVER 10.0 (49.7%)</td>
+<td class="text-muted">1-1 (51.7%)</td>
 </tr>
 </tbody>
 </table>
@@ -731,46 +927,46 @@
 </thead>
 <tbody>
 <tr class="high-confidence-row">
-<td>20:00</td>
+<td>17:00</td>
 <td>Rops vs Inter Turku II</td>
 <td class="">Home Win (35.4%)</td>
-<td class="">OVER (47.7%)</td>
+<td class="">OVER (53.1%)</td>
 <td class="text-success fw-bold">YES (74.1%)</td>
-<td class="">OVER 10.0 (60.6%)</td>
+<td class="">OVER 10.0 (40.9%)</td>
 <td class="text-muted">1-2 (39.0%)</td>
 </tr>
 <tr class="">
-<td>20:00</td>
+<td>17:00</td>
 <td>EPS vs OLS</td>
 <td class="">Home Win (31.6%)</td>
-<td class="">UNDER (43.1%)</td>
-<td class="">NO (46.3%)</td>
-<td class="">UNDER 10.0 (50.4%)</td>
-<td class="text-muted">1-0 (52.0%)</td>
+<td class="">OVER (47.4%)</td>
+<td class="">NO (42.8%)</td>
+<td class="">UNDER 10.0 (52.1%)</td>
+<td class="text-muted">3-0 (52.0%)</td>
 </tr>
 <tr class="">
-<td>21:00</td>
+<td>17:00</td>
 <td>JJK vs Tampere United</td>
 <td class="">Home Win (37.1%)</td>
-<td class="">UNDER (53.2%)</td>
-<td class="">NO (55.3%)</td>
-<td class="">OVER 10.0 (41.2%)</td>
+<td class="">UNDER (41.5%)</td>
+<td class="">NO (59.3%)</td>
+<td class="">OVER 10.0 (39.3%)</td>
 <td class="text-muted">1-0 (64.5%)</td>
 </tr>
 <tr class="">
-<td>22:00</td>
+<td>17:00</td>
 <td>PKKU vs Atlantis</td>
 <td class="">Home Win (28.2%)</td>
-<td class="">UNDER (51.3%)</td>
-<td class="">NO (57.2%)</td>
-<td class="">OVER 10.0 (53.0%)</td>
+<td class="">UNDER (49.4%)</td>
+<td class="">NO (57.7%)</td>
+<td class="">UNDER 10.0 (50.1%)</td>
 <td class="text-muted">0-1 (79.4%)</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div><div class="footer">
-<p>Last updated: 2025-07-19 18:31:25</p>
+<p>Last updated: 2025-07-19 18:01:08</p>
 <p>© 2025 Ultra Advanced Multi-League Football Predictor | Last Updated: 2025-07-18 14:40:44</p>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
